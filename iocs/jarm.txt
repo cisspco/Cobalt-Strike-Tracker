@@ -1,0 +1,2 @@
+# HUNTING SIGNAL ONLY — JARM is a TLS fingerprint, not a unique identifier; do not block on JARM alone
+07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2	Cobalt Strike default team server (OpenJDK 11) — general hunting signal, not campaign-specific	unverified
