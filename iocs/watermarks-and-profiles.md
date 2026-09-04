@@ -7,6 +7,7 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
 - **0** — LOW SIGNAL. Default value baked into virtually every cracked/leaked copy of Cobalt Strike in circulation. Thousands of unrelated actors share it. Do not use to drive classification.
 - **1** — LOW SIGNAL. Also commonly associated with cracked/leaked copies. Same caveat as watermark 0.
 - **678358251** — ⚠️ (미검증/unverified, 2026-09-03) Reported (hunt.io, fetch blocked this run — search-snippet only) as associated with multiple threat actors including the Black Basta ransomware group. Needs verification against a fetched source before treating as a reliable pivot.
+- **BeudtKgqnlm0Ruvf+VYxuw==** — verified 2026-09-04 (Mandiant/Google Cloud Blog, fetched). Cobalt Strike BEACON watermark hash tied specifically to APT24; the same watermark was previously observed in a separate APT24 campaign per the report's IOC section. Not a generic/shared value — treat as a genuine APT24 pivot. Source: "APT24's Pivot to Multi-Vector Attacks" (2025-11-20).
 
 ## Malleable C2 Profiles / Characteristics
 
