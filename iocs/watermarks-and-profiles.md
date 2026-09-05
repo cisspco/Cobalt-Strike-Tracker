@@ -18,6 +18,8 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
   - `wnh.<8-char string>.dns.<C2 domain>`
   These are traffic-shaping/naming characteristics for detection content — not specific hostnames to block. Source: Mandiant/Google Cloud Blog, "UNC4393 Goes Gently into the SILENTNIGHT" (2024-07-29).
 
+- **KnowledgeDeliver / CVE-2026-5426** — verified 2026-09-05 (Mandiant/Google Cloud Blog, fetched). No watermark or malleable C2 profile details were disclosed in the report for this campaign; noted here for completeness only. Source: "Exploitation of KnowledgeDeliver via ViewState Deserialization Vulnerability" (2026-05-25).
+
 ## Default / Public JARM Reference
 
 - `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — publicly documented default Cobalt Strike team server JARM (tied to OpenJDK 11 runtime commonly used by operators). Widely known value; legitimate services on the same Java stack can coincidentally share it. Hunting/pivoting use only — see `iocs/jarm.txt`.

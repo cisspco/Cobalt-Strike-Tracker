@@ -4,14 +4,14 @@ Daily-updated tracker of **malicious** use of Cobalt Strike — named criminal/s
 
 **Cobalt Strike is a commercial, legitimately-licensed red-team tool: a team server found by an internet scan is not, by itself, evidence of malicious infrastructure — authorized pentesters and red teams run servers that look identical in scans, so only hosts explicitly attributed to a specific malicious campaign, intrusion, or malware family by a source are treated as block-safe attacker C2.**
 
-Last updated: 2026-09-04 UTC
+Last updated: 2026-09-05 UTC
 
 ## Counts
 - C2 domains (attacker-attributed, block-safe): 0
 - C2 IPs (attacker-attributed, block-safe): 5
 - Needs-review (scanner-only / ambiguous, NOT block-safe): 0
 - JARM hunting signals: 1
-- File hashes: 0
+- File hashes: 1
 - Unverified C2 candidates (domains + IPs): 0
 
 ## Files
