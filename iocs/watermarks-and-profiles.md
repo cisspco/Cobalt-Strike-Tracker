@@ -24,3 +24,7 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
 ## Default / Public JARM Reference
 
 - `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — publicly documented default Cobalt Strike team server JARM (tied to OpenJDK 11 runtime commonly used by operators). Widely known value; legitimate services on the same Java stack can coincidentally share it. Hunting/pivoting use only — see `iocs/jarm.txt`.
+
+## Macro Trend Notes (not IOCs)
+
+- **Cobalt Strike BEACON ransomware-incident share, declining** — verified 2026-09-14 (Google Cloud/Mandiant Blog, fetched). BEACON's share of ransomware intrusions fell from ~60% (2021) to ~38% (2022), 20% (2023), 11% (2024), and 2% (2025), attributed partly to actors adopting alternative post-exploitation frameworks (e.g. AdaptixC2). No specific campaign or IOC attached — informational context only, not a detection or blocklist signal. Source: "Ransomware Tactics, Techniques, and Procedures in a Shifting Threat Landscape" (2026-03-16).
