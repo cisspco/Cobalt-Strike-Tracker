@@ -21,6 +21,10 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
 
 - **KnowledgeDeliver / CVE-2026-5426** — verified 2026-09-05 (Mandiant/Google Cloud Blog, fetched). No watermark or malleable C2 profile details were disclosed in the report for this campaign; noted here for completeness only. Source: "Exploitation of KnowledgeDeliver via ViewState Deserialization Vulnerability" (2026-05-25).
 
+## Threat Actor Attribution Notes (not IOCs)
+
+- **DEV-0243** — verified 2026-09-17 (Microsoft Security Insider, fetched). Named in Microsoft/Fortra/Health-ISAC's joint technical-and-legal disruption operation against cracked/leaked Cobalt Strike (enabled by a 2023-03-31 US District Court order), as an actor designation associated with deploying cracked Cobalt Strike ahead of Conti and LockBit ransomware. No specific watermark, IP, or domain disclosed in the source — recorded here as attribution context only, not an IOC. Cracked Cobalt Strike copies were linked to 68+ ransomware attacks across 19 countries' healthcare organizations per the same source. Source: "Stopping cybercriminals from abusing security tools" (microsoft.com/en-au/security/security-insider).
+
 ## Default / Public JARM Reference
 
 - `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — publicly documented default Cobalt Strike team server JARM (tied to OpenJDK 11 runtime commonly used by operators). Widely known value; legitimate services on the same Java stack can coincidentally share it. Hunting/pivoting use only — see `iocs/jarm.txt`.
