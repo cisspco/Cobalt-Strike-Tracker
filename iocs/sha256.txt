@@ -1,1 +1,2 @@
+5f37b85687780c089607670040dbb3da2749b91b8adc0aa411fd6280b5fa7103	beacon	BlackByte ransomware intrusion (ProxyShell Exchange exploitation)	verified
 7c1f99dca8e5a7897892f9d224a6495023a2cfd2671697d229d355978c415ed2	loader	KnowledgeDeliver/CVE-2026-5426	verified

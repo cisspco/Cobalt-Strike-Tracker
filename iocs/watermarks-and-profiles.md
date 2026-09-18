@@ -24,6 +24,7 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
 ## Threat Actor Attribution Notes (not IOCs)
 
 - **DEV-0243** — verified 2026-09-17 (Microsoft Security Insider, fetched). Named in Microsoft/Fortra/Health-ISAC's joint technical-and-legal disruption operation against cracked/leaked Cobalt Strike (enabled by a 2023-03-31 US District Court order), as an actor designation associated with deploying cracked Cobalt Strike ahead of Conti and LockBit ransomware. No specific watermark, IP, or domain disclosed in the source — recorded here as attribution context only, not an IOC. Cracked Cobalt Strike copies were linked to 68+ ransomware attacks across 19 countries' healthcare organizations per the same source. Source: "Stopping cybercriminals from abusing security tools" (microsoft.com/en-au/security/security-insider).
+- **DEV-0243 (additional context)** — verified 2026-09-18 (Microsoft Security Blog, fetched, via search-result summary of "Raspberry Robin worm part of larger ecosystem facilitating pre-ransomware activity", 2022-10-27). DEV-0243 overlaps with the actor tracked elsewhere as EvilCorp; first observed deploying LockBit ransomware-as-a-service in November 2021. Background/attribution context only — no new watermark, IP, or domain.
 
 ## Default / Public JARM Reference
 
