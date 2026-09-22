@@ -10,6 +10,7 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
 - **678358251** — ⚠️ (미검증/unverified, 2026-09-03) Reported (hunt.io, fetch blocked this run — search-snippet only) as associated with multiple threat actors including the Black Basta ransomware group. Needs verification against a fetched source before treating as a reliable pivot.
 - **688983459** — ⚠️ (미검증/unverified, 2026-09-07) Reported (hunt.io, fetch blocked this run — search-snippet only) as tied to a cluster of infrastructure running the latest Cobalt Strike version. No specific campaign/actor attribution in the snippet — needs a fetched source before use as a pivot.
 - **BeudtKgqnlm0Ruvf+VYxuw==** — verified 2026-09-04 (Mandiant/Google Cloud Blog, fetched). Cobalt Strike BEACON watermark hash tied specifically to APT24; the same watermark was previously observed in a separate APT24 campaign per the report's IOC section. Not a generic/shared value — treat as a genuine APT24 pivot. Source: "APT24's Pivot to Multi-Vector Attacks" (2025-11-20).
+- **100000000** — ⚠️ (미검증/unverified, 2026-09-22) Reported (hunt.io, fetch blocked this run — search-snippet only) via sandbox analysis of the "Cobalt Strike Cat" South Korea campaign as a common identifier in cracked/leaked Cobalt Strike builds. LOW SIGNAL, same caveat as watermarks 0/1 — do not use to drive classification.
 
 ## Malleable C2 Profiles / Characteristics
 
@@ -21,6 +22,7 @@ Cumulative notes on Cobalt Strike license watermark IDs and malleable C2 profile
   These are traffic-shaping/naming characteristics for detection content — not specific hostnames to block. Source: Mandiant/Google Cloud Blog, "UNC4393 Goes Gently into the SILENTNIGHT" (2024-07-29).
 
 - **KnowledgeDeliver / CVE-2026-5426** — verified 2026-09-05 (Mandiant/Google Cloud Blog, fetched). No watermark or malleable C2 profile details were disclosed in the report for this campaign; noted here for completeness only. Source: "Exploitation of KnowledgeDeliver via ViewState Deserialization Vulnerability" (2026-05-25).
+- **jQuery-themed profile — "Cobalt Strike Cat" South Korea campaign** — ⚠️ (미검증/unverified, 2026-09-22, hunt.io, fetch blocked — search-snippet only). A v4.5-based modified variant dubbed "Cobalt Strike Cat" used a jQuery-themed malleable profile, communicating over port 443, against South Korean government/business targets; delivered via a Rust-compiled loader after recon with SQLMap/dirsearch against an exposed web directory. Traffic-shaping detection content only — no specific team server IP confirmed with confidence for blocklist purposes (reported host on EDGENAP LTD/Japan network, exposed <24h). Report dated ~2025-03, so not treated as a "recent (60-day)" campaign.
 
 ## Threat Actor Attribution Notes (not IOCs)
 

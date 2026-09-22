@@ -1,3 +1,4 @@
 160.202.163.100	Vermilion Strike (unofficial Linux CS Beacon reimplementation) C2 per Intezer 2021 research (unverified, search-snippet only); last seen 2021-09-06, ~5yr stale infrastructure, likely reassigned — do not block
+189.1.231.190	Cobalt Strike team server (Honduras) with well-known watermark + unique TLS cert, pivot point shared by 50 other IPs; Golang beacon uses VS Code Tunnels for C2 evasion (hunt.io, unverified, fetch blocked); no specific criminal/state campaign attribution disclosed — scanner/pivot detection only, do not block
 update.microsoftkernel.com	Vermilion Strike C2 domain per Intezer 2021 research (unverified); resolved to 160.202.163.100, last seen 2021-09-06, stale/likely reassigned
 update.microsofthk.com	Vermilion Strike C2 domain per Intezer 2021 research (unverified); resolved to 160.202.163.100, last seen 2021-09-06, stale/likely reassigned
