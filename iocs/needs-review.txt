@@ -2,3 +2,9 @@
 189.1.231.190	Cobalt Strike team server (Honduras) with well-known watermark + unique TLS cert, pivot point shared by 50 other IPs; Golang beacon uses VS Code Tunnels for C2 evasion (hunt.io, unverified, fetch blocked); no specific criminal/state campaign attribution disclosed — scanner/pivot detection only, do not block
 update.microsoftkernel.com	Vermilion Strike C2 domain per Intezer 2021 research (unverified); resolved to 160.202.163.100, last seen 2021-09-06, stale/likely reassigned
 update.microsofthk.com	Vermilion Strike C2 domain per Intezer 2021 research (unverified); resolved to 160.202.163.100, last seen 2021-09-06, stale/likely reassigned
+104.193.252.197	UNC2628/DarkSide Cobalt Strike BEACON C2 per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); infrastructure from 2021 report, ~5yr stale, likely reassigned — do not block
+162.244.81.253	UNC2628/DarkSide Cobalt Strike BEACON C2 per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); infrastructure from 2021 report, ~5yr stale, likely reassigned — do not block
+185.180.197.86	UNC2628/DarkSide Cobalt Strike BEACON C2 per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); infrastructure from 2021 report, ~5yr stale, likely reassigned — do not block
+athaliaoriginals.com	UNC2628/DarkSide Cobalt Strike BEACON C2 domain per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); 2021 report, ~5yr stale, likely reassigned — do not block
+lagrom.com	UNC2628/DarkSide Cobalt Strike BEACON C2 domain per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); 2021 report, ~5yr stale, likely reassigned — do not block
+ctxinit.azureedge.net	Shared Azure CDN/Front Door subdomain used as UNC2628/DarkSide Cobalt Strike C2 proxy per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); multi-tenant cloud infra, near-certainly reassigned to unrelated Azure customers since 2021 — never block
