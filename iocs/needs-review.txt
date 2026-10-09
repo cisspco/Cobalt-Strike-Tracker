@@ -25,5 +25,6 @@
 athaliaoriginals.com	UNC2628/DarkSide Cobalt Strike BEACON C2 domain per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); 2021 report, ~5yr stale, likely reassigned — do not block
 ctxinit.azureedge.net	Shared Azure CDN/Front Door subdomain used as UNC2628/DarkSide Cobalt Strike C2 proxy per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); multi-tenant cloud infra, near-certainly reassigned to unrelated Azure customers since 2021 — never block
 lagrom.com	UNC2628/DarkSide Cobalt Strike BEACON C2 domain per Mandiant/Google Cloud Blog (verified, fetched 2026-09-25); 2021 report, ~5yr stale, likely reassigned — do not block
+update.microsoftapply.com	ThreatFox (abuse.ch) automated feed flagged as Cobalt Strike botnet_cc domain impersonating Microsoft branding, last-seen 2026-06 per search-snippet summary (source fetch not attempted this run); no named campaign/actor attribution disclosed — automated scanner/feed classification only, do not block
 update.microsofthk.com	Vermilion Strike C2 domain per Intezer 2021 research (unverified); resolved to 160.202.163.100, last seen 2021-09-06, stale/likely reassigned
 update.microsoftkernel.com	Vermilion Strike C2 domain per Intezer 2021 research (unverified); resolved to 160.202.163.100, last seen 2021-09-06, stale/likely reassigned
