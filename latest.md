@@ -1,17 +1,15 @@
-# Cobalt Strike Snapshot — 2026-10-16 UTC
+# Cobalt Strike Snapshot — 2026-10-17 UTC
 
 ## 수집 상태
-- 페치 성공: www.microsoft.com/en-us/security/blog (검색, 신규 CS 게시물 없음), cloud.google.com/blog/topics/threat-intelligence (신규 CS 게시물 없음)
-- 페치 차단: hunt.io, unit42.paloaltonetworks.com, netlas.io, www.recordedfuture.com, www.thedfirreport.com, www.group-ib.com (전부 DNS 미해결 — egress 차단, 기존 실행들과 동일)
-- 검증: 0 (신규) / 미검증: 0 (신규 호스트 없음, 기존 노트에 컨텍스트만 보강) / 검토 필요: 0 (신규 없음)
+- 페치 성공: www.microsoft.com/en-us/security/blog (검색, 신규 CS 게시물 없음), cloud.google.com/blog/topics/threat-intelligence (목록), cloud.google.com/.../armory-castle-exploits-beyondtrust (CS 언급 없음), cloud.google.com/.../financially-motivated-threat-actor-breeze-comet-targets-brazil (CS 언급 없음), cloud.google.com/.../defending-against-active-exploitation-of-citrix-netscaler-adc-and-gateway-appliances (CS 언급 없음)
+- 페치 차단: unit42.paloaltonetworks.com, www.recordedfuture.com, www.thedfirreport.com, www.group-ib.com, threatfox.abuse.ch, threatcluster.io (전부 DNS 미해결 — egress 차단, 기존 실행들과 동일)
+- 검증: 0 (신규) / 미검증: 0 (신규 호스트 없음) / 검토 필요: 0 (신규 없음)
 
-이번 실행의 WebSearch 6개 쿼리는 모두 기존에 추적 중인 캠페인(StrikeShark/SharkLoader, The Gentlemen, Nitrogen ransomware, Ghostwriter APT, watermark 987654321/678358251 클러스터, hunt.io 집계, RST Cloud/Netlas JARM 방법론, OrangeCon 2026 ML 탐지 발표)의 재언급이었음. "미검증" 상태의 "검증"으로의 승격 없음. 신규 공격자 귀속 C2, 신규 해시, 신규 검토 대상 없음.
+이번 실행의 WebSearch 6개 쿼리는 모두 기존에 추적 중인 캠페인(StrikeShark/SharkLoader, The Gentlemen, Ghostwriter APT, watermark 987654321/1473793097/1357776117 클러스터, ThreatFox 개별 C2 엔트리, OrangeCon 2026 ML 탐지 발표, RST Cloud/Netlas JARM 방법론, hunt.io 집계)의 재언급이었음. "미검증" 상태의 "검증"으로의 승격 없음. 신규 공격자 귀속 C2, 신규 해시, 신규 검토 대상 없음.
 
-보강 2건 (모두 hunt.io 검색 스니펫, 소스 자체는 이번 실행에서도 fetch 차단 — DNS 미해결):
-1. Cobalt Strike 팀서버 기본(out-of-the-box) 자체서명 TLS 인증서 일련번호 `8BB00EE` — 워터마크 0/1과 동일한 저신호(LOW SIGNAL) 성격, 차단/귀속 판단에 사용 금지. `iocs/watermarks-and-profiles.md`에 추가.
-2. 2025년 전체 집계치: 고유 IP 8,868개가 Cobalt Strike 인프라로 관측됨(기존에 기록된 2026년 1월 집계 1,921개와 별개 수치). 개별 귀속 없는 집계 트렌드 정보일 뿐 — IOC로 사용 불가.
+Google Cloud/Mandiant 블로그에서 신규 게시물 3건(ARMORY CASTLE/BeyondTrust 제로데이, BREEZE COMET/브라질 금융권, Citrix NetScaler 제로데이 2건)을 직접 fetch하여 전문을 확인했으나, 셋 다 Cobalt Strike를 로더/비콘/C2로 사용하지 않음(각각 커스텀 툴체인 SAWFLY/BARECLAW, COBALTSPIN/REALBREEZE/MILDFROST 등, WHIPSHOT/SLAPSHOT 사용). 특히 BREEZE COMET 리포트의 "COBALTSPIN"은 이름이 유사하나 Cobalt Strike와 무관한 별도의 Rust 기반 터널러임 — 혼동 방지를 위해 기록. 이 3건은 IOC로 채택하지 않음(CS 미관련).
 
-조용한 하루(quiet day) — 4연속 (2026-10-13, 10-14, 10-15에 이어).
+조용한 하루(quiet day) — 5연속 (2026-10-13 ~ 10-16에 이어).
 
 ## 최근 캠페인 (최근 60일)
 
@@ -27,7 +25,7 @@
 변경 없음 (2개). 상세는 `iocs/jarm.txt` 참고.
 
 ## 워터마크 · 맬리어블 프로파일
-기본 인증서 일련번호 `8BB00EE` 및 2025년 집계 IP 수(8,868) 보강 노트 추가(상세는 `iocs/watermarks-and-profiles.md` 참고). 그 외 변경 없음.
+변경 없음. 상세는 `iocs/watermarks-and-profiles.md` 참고.
 
 ## 파일 해시 (2)
 변경 없음. 상세는 `iocs/sha256.txt` 참고.
@@ -41,7 +39,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
-- 기타: 기본 인증서 일련번호 `8BB00EE` 저신호 노트 추가, 2025년 전체 집계 IP 수(8,868) 트렌드 노트 추가
+- 기타: Google Cloud/Mandiant 신규 게시물 3건 전문 확인 — Cobalt Strike 무관 확인(IOC 미채택). "COBALTSPIN" 명칭 혼동 방지 노트.
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -56,12 +54,15 @@
 ```
 
 ## 출처
-- [Microsoft Security Blog 검색](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 2026-10-16 — fetched (신규 CS 게시물 없음; 최신 결과는 2026-09-03 ASCII smuggling 게시물로 CS 무관)
-- [Google Cloud Threat Intelligence Blog](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-10-16 — fetched (신규 CS 게시물 없음; ShinyHunters/PeopleSoft, BREEZE COMET 게시물 확인되었으나 CS 언급 없음)
-- [Hunt.io — Complete Guide to Hunting Cobalt Strike Part 4: C2 Feeds & API Automation](https://hunt.io/blog/guide-hunting-cobalt-strike-part-4-c2-feeds-api) — 검색 스니펫만 (fetch 시도, DNS 미해결) — blocked
-- [Unit 42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — 2026-10-16 — blocked (DNS 미해결)
-- [Netlas.io — RST Cloud C2 Hunting](https://netlas.io/blog/%D1%812_hunting_by_rst_cloud/) — 2026-10-16 — blocked (DNS 미해결)
-- [Recorded Future Research](https://www.recordedfuture.com/research) — 2026-10-16 — blocked (DNS 미해결)
-- [The DFIR Report](https://www.thedfirreport.com/) — 2026-10-16 — blocked (DNS 미해결)
-- [Group-IB Blog](https://www.group-ib.com/blog/) — 2026-10-16 — blocked (DNS 미해결)
+- [Microsoft Security Blog 검색](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 2026-10-17 — fetched (신규 CS 게시물 없음; 최신 CS 언급은 2021-01-20 Solorigate/TEARDROP 게시물)
+- [Google Cloud Threat Intelligence Blog](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-10-17 — fetched (목록만, 날짜 미표시)
+- [Google Cloud — ARMORY CASTLE Exploits BeyondTrust](https://cloud.google.com/blog/topics/threat-intelligence/armory-castle-exploits-beyondtrust) — 2026-10-17 — fetched (CS 무관 확인; CVE-2026-102764, PRC-nexus 추정)
+- [Google Cloud — BREEZE COMET Targets Brazil](https://cloud.google.com/blog/topics/threat-intelligence/financially-motivated-threat-actor-breeze-comet-targets-brazil) — 2026-10-17 — fetched (CS 무관 확인; "COBALTSPIN"은 별도 터널러, CS 아님)
+- [Google Cloud — Citrix NetScaler ADC/Gateway Active Exploitation](https://cloud.google.com/blog/topics/threat-intelligence/defending-against-active-exploitation-of-citrix-netscaler-adc-and-gateway-appliances) — 2026-10-17 — fetched (CS 무관 확인; CVE-2026-88772/88771 제로데이)
+- [Unit 42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — 2026-10-17 — blocked (DNS 미해결)
+- [Recorded Future — RedNovember](https://www.recordedfuture.com/research/rednovember-targets-government-defense-and-technology-organizations) — 2026-10-17 — blocked (DNS 미해결)
+- [The DFIR Report](https://www.thedfirreport.com/) — 2026-10-17 — blocked (DNS 미해결)
+- [Group-IB Blog](https://www.group-ib.com/blog/) — 2026-10-17 — blocked (DNS 미해결)
+- [ThreatFox (abuse.ch)](https://threatfox.abuse.ch/browse/malware/win.cobalt_strike/) — 2026-10-17 — blocked (DNS 미해결)
+- [ThreatCluster — Multiple Cobalt Strike Beacons Detected on Various Ports](https://threatcluster.io/cluster/multiple-cobalt-strike-beacons-detected-on-various-ports-b03995dc) — 2026-10-17 — blocked (DNS 미해결; 검색 스니펫만, 구체 IP 미공개, 스캐너 탐지로 추정)
 - 이전 실행에서 기록된 모든 출처는 `iocs/watermarks-and-profiles.md` 참고 (중복 재검색만 수행, 신규 출처 없음)
