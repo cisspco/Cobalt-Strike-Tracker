@@ -1,15 +1,15 @@
-# Cobalt Strike Snapshot — 2026-10-18 UTC
+# Cobalt Strike Snapshot — 2026-10-19 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse (2022-11-18 게시물, CS JAR 버전 식별용 YARA 규칙/VT Collection 소개 — 신규 IOC/캠페인 없음, 이미 알려진 배경 정보)
-- 페치 차단: unit42.paloaltonetworks.com, netlas.io, www.recordedfuture.com, thedfirreport.com, www.group-ib.com (전부 DNS 미해결 — egress 차단, 기존 실행들과 동일한 차단 목록)
+- 페치 성공: cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse (2022-11-18 게시물 재확인 — YARA 규칙/VT Collection 소개, 신규 IOC·캠페인 없음)
+- 페치 차단: unit42.paloaltonetworks.com, www.recordedfuture.com, thedfirreport.com, www.silentpush.com, hunt.io, www.group-ib.com, threatfox.abuse.ch (전부 DNS 미해결 — egress 차단, 기존 실행들과 동일한 차단 목록 + 오늘 추가 시도한 silentpush.com/hunt.io/threatfox.abuse.ch도 차단 확인)
 - 검증: 0 (신규) / 미검증: 0 (신규 호스트 없음) / 검토 필요: 0 (신규 없음)
 
-이번 실행의 WebSearch 6개 쿼리 결과는 전부 기존에 추적 중인 캠페인/지표의 재언급이었음(StrikeShark/SharkLoader, The Gentlemen, watermark 987654321/666666666 클러스터, ThreatFox 개별 C2 엔트리 107.174.14.102·47.103.214.7·206.119.178.109 — 모두 이미 `iocs/needs-review.txt`에 기록됨, OrangeCon 2026 ML 탐지 발표, RST Cloud/Netlas JARM 방법론). "미검증" 상태의 "검증"으로의 승격 없음. 신규 공격자 귀속 C2, 신규 해시, 신규 검토 대상 없음.
+이번 실행의 WebSearch 6개 쿼리 결과는 전부 기존에 추적 중인 캠페인/지표의 재언급이었음(StrikeShark/SharkLoader — 도메인 connect-microsoft.com/ms-record.com/ms-record.top/ms-tray.top/harivo.vip 전부 기존 `iocs/unverified-domains.txt`에 이미 기록됨; The Gentlemen/CountLoader 랜섬웨어 제휴 — 워터마크 1473793097/1357776117 기존 `iocs/watermarks-and-profiles.md`에 이미 기록됨; Ghostwriter APT 지오펜싱 PDF 캠페인 — 기존 기록됨; ThreatFox 개별 C2 엔트리 107.174.14.102·47.103.214.7·206.119.178.109 — 모두 이미 `iocs/needs-review.txt`에 기록됨; watermark 987654321 클러스터; OrangeCon 2026 ML 탐지 발표; RST Cloud JARM 헌팅 방법론). "미검증" 상태의 "검증"으로의 승격 없음. 신규 공격자 귀속 C2, 신규 해시, 신규 검토 대상 없음.
 
-site: 검색으로 microsoft.com 및 cloud.google.com에 추가로 질의했으나 2026년 신규 Cobalt Strike 전용 게시물은 발견되지 않음 — 2022-11-18 Google Cloud 게시물("Making Cobalt Strike Harder for Threat Actors to Abuse")만 신규로 직접 fetch하여 확인, 내용은 YARA 규칙/VirusTotal Collection 배경 설명으로 구체 IOC·캠페인 없음.
+site: 검색으로 microsoft.com 및 cloud.google.com에 추가 질의했으나 2026년 신규 Cobalt Strike 전용 게시물 없음. 추가로 silentpush.com(Gentlemen 랜섬웨어 원문), hunt.io(희귀 워터마크 리포트 원문), group-ib.com, threatfox.abuse.ch 직접 fetch를 시도했으나 전부 DNS 미해결로 차단됨 — 기존에 스니펫으로만 확인된 항목들을 검증 상태로 승격시키지 못함.
 
-조용한 하루(quiet day) — 6연속 (2026-10-13 ~ 10-17에 이어).
+조용한 하루(quiet day) — 7연속 (2026-10-13 ~ 10-18에 이어).
 
 ## 최근 캠페인 (최근 60일)
 
@@ -39,7 +39,7 @@ site: 검색으로 microsoft.com 및 cloud.google.com에 추가로 질의했으�
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
-- 기타: Google Cloud "Making Cobalt Strike Harder for Threat Actors to Abuse" (2022-11-18) 전문 확인 — CS 버전 식별용 YARA/VT Collection 배경 설명, 신규 IOC 없음(IOC 미채택).
+- 기타: silentpush.com, hunt.io, group-ib.com, threatfox.abuse.ch 직접 fetch 시도 — 전부 DNS 미해결로 차단 확인 (이번 실행에서 처음 시도). cloud.google.com 게시물 재확인, 신규 내용 없음.
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -54,10 +54,12 @@ site: 검색으로 microsoft.com 및 cloud.google.com에 추가로 질의했으�
 ```
 
 ## 출처
-- [Google Cloud — Making Cobalt Strike Harder for Threat Actors to Abuse](https://cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse) — 2026-10-18 — fetched (2022-11-18 원문; YARA 규칙/VT Collection 배경, 신규 IOC 없음)
-- [Unit 42 — Cobalt Strike Malleable C2](https://unit42.paloaltonetworks.com/cobalt-strike-malleable-c2/) — 2026-10-18 — blocked (DNS 미해결)
-- [Netlas.io — RST Cloud JARM Hunting](https://netlas.io/blog/%D1%812_hunting_by_rst_cloud/) — 2026-10-18 — blocked (DNS 미해결)
-- [Recorded Future — RedNovember](https://www.recordedfuture.com/research/rednovember-targets-government-defense-and-technology-organizations) — 2026-10-18 — blocked (DNS 미해결)
-- [The DFIR Report](https://thedfirreport.com/) — 2026-10-18 — blocked (DNS 미해결)
-- [Group-IB Blog](https://www.group-ib.com/blog/) — 2026-10-18 — blocked (DNS 미해결)
+- [Google Cloud — Making Cobalt Strike Harder for Threat Actors to Abuse](https://cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse) — 2026-10-19 — fetched (2022-11-18 원문; YARA 규칙/VT Collection 배경, 신규 IOC 없음)
+- [Unit 42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — 2026-10-19 — blocked (DNS 미해결)
+- [Recorded Future — A Multi-Method Approach to Identifying Rogue Cobalt Strike Servers](https://www.recordedfuture.com/research/cobalt-strike-servers) — 2026-10-19 — blocked (DNS 미해결)
+- [The DFIR Report — Cobalt Strike category](https://thedfirreport.com/category/cobaltstrike) — 2026-10-19 — blocked (DNS 미해결)
+- [Silent Push — No Place to Hide: The Gentlemen](https://www.silentpush.com/blog/gentlemen-ransomware/) — 2026-10-19 — blocked (DNS 미해결)
+- [Hunt.io — Rare Watermark Links Cobalt Strike Team Servers](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity) — 2026-10-19 — blocked (DNS 미해결)
+- [Group-IB Media Center](https://www.group-ib.com/media-center/press-releases/gib-cobalt-activity/) — 2026-10-19 — blocked (DNS 미해결)
+- [ThreatFox IOC 1892469](https://threatfox.abuse.ch/ioc/1892469/json/) — 2026-10-19 — blocked (DNS 미해결)
 - 이전 실행에서 기록된 모든 출처는 `iocs/watermarks-and-profiles.md` 참고 (중복 재검색만 수행, 신규 출처 없음)
