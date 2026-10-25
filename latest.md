@@ -1,17 +1,15 @@
-# Cobalt Strike Snapshot — 2026-10-24 UTC
+# Cobalt Strike Snapshot — 2026-10-25 UTC
 
 ## 수집 상태
-- 페치 성공: microsoft.com/en-us/security/blog (목록 페이지, Cobalt Strike 관련 신규 게시물 없음), cloud.google.com/blog/topics/threat-intelligence (목록 페이지, Cobalt Strike 관련 신규 게시물 없음)
-- 페치 차단: community.gurucul.com (StrikeShark 원문, DNS 미해결), silentpush.com (The Gentlemen 원문, DNS 미해결), hunt.io (Rare Watermark 원문, DNS 미해결), unit42.paloaltonetworks.com (team-server 및 malleable-c2 원문, DNS 미해결, 2건), gbhackers.com (Nitrogen ransomware 원문, DNS 미해결), netlas.io (RST Cloud JARM 헌팅 원문, DNS 미해결), securelist.com (StrikeShark 원문, DNS 미해결), threatfox.abuse.ch (개별 IOC 페이지, DNS 미해결), recordedfuture.com (DNS 미해결, 신규 시도), thedfirreport.com (DNS 미해결, 신규 시도), group-ib.com (DNS 미해결, 신규 시도)
-- 검증: 0 (신규) / 미검증: 0 (신규 호스트 없음) / 검토 필요: 0 (신규 없음)
+- 페치 성공: cloud.google.com/blog (Google Cloud "Making Cobalt Strike Harder for Threat Actors to Abuse", 2022년 게시물, 신규 지표 없음)
+- 페치 차단: unit42.paloaltonetworks.com (team-server 원문, DNS 미해결), silentpush.com (The Gentlemen 원문, DNS 미해결), hunt.io (Rare Watermark 원문 + Hunting Guide Part 3, DNS 미해결, 2건), community.gurucul.com (StrikeShark 원문, DNS 미해결), threatbook.io (북한 연계 우즈베키스탄 캠페인 원문, DNS 미해결), netlas.io (RST Cloud JARM 헌팅 원문, DNS 미해결), dailysecurityreview.com (Ghostwriter 원문, DNS 미해결)
+- 검증: 0 (신규) / 미검증: 0 (신규 호스트 없음) / 검토 필요: 2 (신규 ThreatFox 스캐너 탐지 IP)
 
-이번 실행은 지시사항에 명시된 6개 WebSearch 쿼리를 모두 수행했으며, 결과는 전부 기존에 추적 중인 캠페인/지표의 재언급이었음: StrikeShark/SharkLoader(기존 기록됨), The Gentlemen/CountLoader 워터마크 1473793097/1357776117(기존 기록됨), watermark 987654321/666666666/678358251 클러스터(기존 기록됨), ThreatFox 개별 C2 엔트리 (107.174.14.102:443, 47.103.214.7:18443, 206.119.178.109:18443 — 전부 `iocs/needs-review.txt`에 이미 있음), hunt.io "Rare Watermark Links Cobalt Strike 4.10 Team Servers" 기사(기존 기록됨), Unit42의 team-server/malleable-C2 연구(일반론, 특정 캠페인·IOC 없음, 신규 기록 불필요), OrangeCon 2026 ML 탐지 발표(기존 기록됨), Operation Morpheus 법집행 조치(기존 기록됨, 배경 정보).
+이번 실행은 지시사항의 6개 WebSearch 쿼리를 모두 수행했음. 결과는 대부분 기존에 추적 중인 캠페인·지표의 재언급이었음: StrikeShark/SharkLoader(기존 기록됨), The Gentlemen/CountLoader 워터마크 1473793097·1357776117(기존 기록됨), 워터마크 987654321 클러스터 및 ThreatBook의 북한 연계 우즈베키스탄 캠페인 가설(기존 기록됨), Ghostwriter APT 지오펜싱 PDF 캠페인(기존 기록됨), Unit42의 team-server/malleable-C2 일반 연구(특정 캠페인·IOC 없음), JARM 피벗 헌팅 방법론(기존 기록됨). 지시사항이 지정한 8개 핵심 출처에 WebFetch를 시도했으나 전부 DNS 미해결로 차단되어 모두 미검증(unverified) 상태로 유지됨. cloud.google.com만 재확인용으로 성공했고 2022년 구 게시물 재확인에 그침(YARA 규칙/VirusTotal 컬렉션 공지, 신규 IOC 없음).
 
-지시사항이 신규로 시도해보라고 명시한 3개 출처(recordedfuture.com, thedfirreport.com, group-ib.com)를 이번 실행에서 처음 직접 WebFetch로 시도했으나 전부 DNS 미해결(ENOTFOUND)로 차단됨 — "도달 가능할 경우 강조하라"는 지시와 반대로, 이 세 출처 모두 이 샌드박스에서 도달 불가능함을 확인. 기존에 알려진 차단 목록(thehackernews.com 등)에 더해 community.gurucul.com, silentpush.com, hunt.io, unit42.paloaltonetworks.com, gbhackers.com, netlas.io, securelist.com, threatfox.abuse.ch도 전부 DNS 미해결로 재확인됨 — 이 샌드박스에서 실질적으로 도달 가능한 출처는 microsoft.com과 cloud.google.com 두 곳뿐.
+금일 신규 사항: ThreatFox 검색 결과에서 기존에 기록되지 않은 "Cobalt Strike" 태그 스캐너 탐지 IP 2건을 발견 — 107.175.206.36:8866 (최초 관측 2026-03-02), 47.92.109.107:32251 (최종 관측 2026-03-27). 둘 다 특정 캠페인·행위자 귀속 없이 ThreatFox 자동 피드 분류만 존재하여 `iocs/needs-review.txt`에 추가(차단 금지, 스캐너 탐지만 된 항목).
 
-microsoft.com 보안 블로그 및 cloud.google.com Threat Intelligence 블로그 색인을 모두 재확인했으나 Cobalt Strike·랜섬웨어 전구체·악성 C2 관련 신규 게시물 없음.
-
-12일 연속 조용한 하루(quiet day) — 2026-10-13 ~ 10-23에 이어.
+캠페인 수준 신규 보고는 없음 — 13일 연속 조용한 하루(quiet day), 2026-10-13 ~ 10-24에 이어.
 
 ## 최근 캠페인 (최근 60일)
 
@@ -20,14 +18,17 @@ microsoft.com 보안 블로그 및 cloud.google.com Threat Intelligence 블로�
 ## 공격자 C2 팀서버 (차단 대상) (6)
 변경 없음 — 기존 6개 IP 유지. 상세는 `iocs/ips.txt` 참고.
 
-## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (34)
-변경 없음. 상세는 `iocs/needs-review.txt` 참고.
+## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (36)
+- 107.175.206.36 — ThreatFox 태그 "Cobalt Strike" C2(포트 8866), 캠페인/행위자 귀속 없음, 스캐너/피드 분류만 — ⚠️ (미검증)
+- 47.92.109.107 — ThreatFox 태그 "Cobalt Strike" C2(포트 32251), 캠페인/행위자 귀속 없음, 스캐너/피드 분류만 — ⚠️ (미검증)
+- (기존 34건 변경 없음, 상세는 `iocs/needs-review.txt` 참고)
 
 ## JARM 헌팅 신호 (차단 용도 아님)
 변경 없음 (2개). 상세는 `iocs/jarm.txt` 참고.
 
 ## 워터마크 · 맬리어블 프로파일
-변경 없음 (신규 IOC 없음). 이번 실행의 11개 출처 도달성 재확인 결과를 `iocs/watermarks-and-profiles.md`에 기록.
+- 987654321 — ⚠️ (미검증) ThreatBook의 북한(APT37 TTP 중복) 연계 우즈베키스탄 캠페인 가설과 연결된 워터마크로 재확인됨; ThreatBook 자체도 "확정적 증거 없음"이라고 명시 — 기존 기록, 신규 정보 없음.
+- 그 외 전체 내역은 `iocs/watermarks-and-profiles.md` 참고 (이번 실행 재확인 로그 추가됨).
 
 ## 파일 해시 (2)
 변경 없음. 상세는 `iocs/sha256.txt` 참고.
@@ -37,11 +38,11 @@ microsoft.com 보안 블로그 및 cloud.google.com Threat Intelligence 블로�
 - UNC2628/DarkSide — Slack API를 통한 C3-over-Slack BEACON 프록싱, SMB named pipe `\\.\pipe\UIA_PIPE_*` — 기존 기록, 변경 없음.
 
 ## 이번 실행 변경사항
-- 신규 C2: 없음
+- 신규 C2: 없음 (block-safe 기준)
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
-- 기타: 지시사항이 지정한 8개 핵심 출처(gurucul, silentpush, hunt.io, unit42 ×2, gbhackers, netlas, securelist) 및 threatfox.abuse.ch에 WebFetch를 시도했으나 전부 DNS 미해결로 차단. 추가로 지시사항이 "미시도(untested)"로 분류한 recordedfuture.com, thedfirreport.com, group-ib.com도 이번 실행에서 처음 시도했으나 역시 전부 DNS 미해결 — 도달 가능 출처 목록에 추가되지 않음(강조할 변경 없음). `iocs/watermarks-and-profiles.md`에 이번 실행의 출처 도달성 확인 결과를 기록.
+- 검토 필요 신규 추가: 107.175.206.36, 47.92.109.107 (ThreatFox 스캐너 탐지, 캠페인 귀속 없음)
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -56,18 +57,14 @@ microsoft.com 보안 블로그 및 cloud.google.com Threat Intelligence 블로�
 ```
 
 ## 출처
-- [Microsoft Security Blog — index](https://www.microsoft.com/en-us/security/blog/) — 2026-10-24 — fetched (목록 페이지, Cobalt Strike 관련 신규 게시물 없음)
-- [Google Cloud Threat Intelligence — blog index](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-10-24 — fetched (목록 페이지, Cobalt Strike 관련 신규 게시물 없음)
-- [Gurucul — StrikeShark](https://community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026) — blocked (DNS 미해결)
-- [Silent Push — The Gentlemen](https://www.silentpush.com/blog/gentlemen-ransomware/) — blocked (DNS 미해결)
-- [Hunt.io — Rare Watermark Links Cobalt Strike 4.10 Team Servers](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity) — blocked (DNS 미해결)
+- [Google Cloud — Making Cobalt Strike Harder for Threat Actors to Abuse](https://cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse) — 2022-11-18 — fetched (구 게시물, 신규 지표 없음)
 - [Unit42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — blocked (DNS 미해결)
-- [Unit42 — Cobalt Strike Malleable C2](https://unit42.paloaltonetworks.com/cobalt-strike-malleable-c2/) — blocked (DNS 미해결)
-- [GBHackers — Nitrogen Ransomware](https://gbhackers.com/nitrogen-ransomware-uses-cobalt-strike-and-log-wiping/) — blocked (DNS 미해결)
-- [Netlas.io — RST Cloud C2 Hunting](https://netlas.io/blog/с2_hunting_by_rst_cloud/) — blocked (DNS 미해결)
-- [Securelist — StrikeShark](https://securelist.com/strikeshark-cobalt-strike-campaign/) — blocked (DNS 미해결)
-- [ThreatFox IOC](https://threatfox.abuse.ch/ioc/1824628/) — blocked (DNS 미해결)
-- [Recorded Future — Cobalt Strike C2](https://www.recordedfuture.com/research/cobalt-strike-c2) — blocked (DNS 미해결, 신규 시도)
-- [The DFIR Report — search](https://thedfirreport.com/?s=cobalt+strike) — blocked (DNS 미해결, 신규 시도)
-- [Group-IB — blog](https://www.group-ib.com/blog/) — blocked (DNS 미해결, 신규 시도)
-- 이전 실행에서 기록된 모든 출처는 `iocs/watermarks-and-profiles.md` 참고 (중복 재검색만 수행, 신규 출처 없음)
+- [Silent Push — The Gentlemen Ransomware](https://www.silentpush.com/blog/gentlemen-ransomware/) — blocked (DNS 미해결)
+- [Hunt.io — Rare Watermark Links Cobalt Strike 4.10 Team Servers](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity) — blocked (DNS 미해결)
+- [Hunt.io — Complete Guide to Hunting Cobalt Strike, Part 3](https://hunt.io/blog/guide-hunting-cobalt-strike-part-3-automated-discovery) — blocked (DNS 미해결)
+- [Gurucul — StrikeShark](https://community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026) — blocked (DNS 미해결)
+- [ThreatBook — Suspected North Korea-linked Hackers Target Uzbekistan](https://threatbook.io/blog/suspected-north-korea-linked-hackers-conduct-targeted-attack-campaign-against-uzbekistan) — blocked (DNS 미해결)
+- [Netlas.io — C2 Hunting by RST Cloud](https://netlas.io/blog/с2_hunting_by_rst_cloud/) — blocked (DNS 미해결)
+- [Daily Security Review — Ghostwriter APT Geofenced Ukraine Campaign](https://dailysecurityreview.com/cyber-security/ghostwriter-apt-deploys-cobalt-strike-in-geofenced-ukraine-campaign/) — blocked (DNS 미해결)
+- ThreatFox IOC Database (abuse.ch) — 다수 엔트리, WebSearch 스니펫만 확인, 원문 페이지 fetch 미시도 (알려진 차단 도메인) — 107.175.206.36:8866, 47.92.109.107:32251 신규 확인
+- 이전 실행에서 기록된 모든 출처는 `iocs/watermarks-and-profiles.md` 참고
