@@ -1,49 +1,52 @@
-# Cobalt Strike Snapshot — 2026-11-02 UTC
+# Cobalt Strike Snapshot — 2026-11-03 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/topics/threat-intelligence (최신 게시물 목록 확인, Cobalt Strike 관련 신규 콘텐츠 없음)
-- 페치 차단: unit42.paloaltonetworks.com (malleable-C2 원문 + team-server 원문, DNS 미해결, 2건), recordedfuture.com (RedNovember 원문, DNS 미해결 — 최초로 확정 차단 확인), thedfirreport.com (DNS 미해결 — 최초로 확정 차단 확인), silentpush.com (The Gentlemen 원문, DNS 미해결), threatfox.abuse.ch (IOC JSON, DNS 미해결), group-ib.com (DNS 미해결 — 최초로 확정 차단 확인)
-- 검증: 0 (신규) / 미검증: 0 (신규 호스트 없음) / 검토 필요: 2 (신규 스캐너 피드 탐지)
-
-**참고**: 이 저장소의 직전 스냅샷은 2026-10-25로 기록되어 있으며 2026-10-26~2026-11-01 사이의 스냅샷이 존재하지 않음 — 해당 기간 동안 예약 작업이 실행되지 않았거나 커밋되지 않은 것으로 보임. 이번 실행은 그 공백을 보충하는 것이 아니라 2026-11-02 당일의 검색/페치 결과만 반영함.
-
-이번 실행은 지시사항의 6개 WebSearch 쿼리를 모두 수행했음. 결과는 대부분 기존에 추적 중인 캠페인·지표의 재언급이었음: StrikeShark/SharkLoader(기존 기록됨), The Gentlemen/CountLoader(기존 기록됨), 워터마크 987654321 클러스터(기존 기록됨), RedNovember/Pantegana(기존 기록됨), Ghostwriter APT(기존 기록됨), OrangeCon 2026 ML 탐지 발표(기존 기록됨). 지시사항이 제안한 미시험 출처 3곳(recordedfuture.com, thedfirreport.com, group-ib.com)을 이번 실행에서 직접 재시도했고 전부 DNS 미해결로 확인되어 "차단됨" 목록에 확정 추가함. unit42.paloaltonetworks.com도 2개 URL 모두 재시도했으나 DNS 미해결. cloud.google.com만 재확인용으로 성공했으나 Cobalt Strike 관련 신규 콘텐츠는 없었음(제목에서 추측한 "ARTEX and Friends" 슬러그는 404).
-
-금일 신규 사항: WebSearch 스니펫에서 기존에 기록되지 않은 스캐너 전용 탐지 2건을 발견 — IP 111.228.62.67:80 (ThreatFox, Alibaba 호스팅, 고신뢰도 피드 태그, 캠페인 귀속 없음), 도메인 status.jarredlike.xyz (ANY.RUN 피드, 최종 관측 2026-06-09, 캠페인 귀속 없음). 둘 다 특정 캠페인·행위자 귀속 없이 자동 피드 분류만 존재하여 `iocs/needs-review.txt`에 추가(차단 금지, 스캐너 탐지만 된 항목).
-
-캠페인 수준 신규 보고는 없음 — 조용한 하루(quiet day)가 계속됨.
+- 페치 성공: cloud.google.com/blog/topics/threat-intelligence
+- 페치 차단: unit42.paloaltonetworks.com, hunt.io, silentpush.com, threatbook.io, netlas.io, socradar.io (모두 DNS 해석 실패, 기존 run들과 동일)
+- 검증: 2 / 미검증: 5 / 검토 필요: 39
 
 ## 최근 캠페인 (최근 60일)
 
-신규 캠페인 보고 없음. 기존 추적 중인 캠페인(StrikeShark/SharkLoader, The Gentlemen, Ghostwriter APT, Nitrogen ransomware, RedNovember)에 대한 추가 세부 정보도 금일 검색에서는 발견되지 않음 — 전부 기존 보고의 재인덱싱.
+이번 실행에서 새로 확인된 "최근 60일" 캠페인 없음. 기존에 기록된 StrikeShark/SharkLoader, The Gentlemen/CountLoader, Ghostwriter, RedNovember 등은 모두 2026-10-25 이전 보고서 기준으로 60일 창을 벗어났거나 이미 기록됨 — 아래 "이번 실행 변경사항" 참조.
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
-변경 없음 — 기존 6개 IP 유지. 상세는 `iocs/ips.txt` 참고. (도메인 0건, `iocs/domains.txt` 참고)
+변경 없음 — 기존 6개 IP 유지 (도메인 0건). 상세는 `iocs/ips.txt` / `iocs/domains.txt` 참고.
 
-## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (38)
-- 111.228.62.67 — ThreatFox 태그 "Cobalt Strike" C2(포트 80), Alibaba 호스팅, 고신뢰도 피드 태그, 캠페인/행위자 귀속 없음 — ⚠️ (미검증)
-- status.jarredlike.xyz — ANY.RUN 피드 "Cobalt Strike" 태그, 최종 관측 2026-06-09, 캠페인/행위자 귀속 없음 — ⚠️ (미검증)
-- (기존 36건 변경 없음, 상세는 `iocs/needs-review.txt` 참고)
+(참고: UNC2628/DarkSide 귀속 호스트(athaliaoriginals.com, ctxinit.azureedge.net, lagrom.com, 104.193.252.197, 162.244.81.253, 185.180.197.86)는 Mandiant 보고서로 귀속이 verified 상태이나 2021년 인프라로 ~5년 경과해 재할당 가능성이 높아 `iocs/needs-review.txt`에 "do not block"으로 분류되어 있음 — block-safe 버킷(`iocs/ips.txt`/`iocs/domains.txt`)과는 별개.)
+
+## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (39)
+기존 38건에 신규 1건 추가:
+- 45.67.229.97 — ThreatFox(abuse.ch) IOC #642546, 범용 "Cobalt Strike C2 URL" 태그, 2026-04-01 만료, 캠페인/행위자 귀속 없음 — 스캐너/피드 분류만, 차단 금지
+
+전체 목록은 `iocs/needs-review.txt` 참조 (39건, 모두 스캐너 탐지 또는 귀속 불명확).
 
 ## JARM 헌팅 신호 (차단 용도 아님)
-변경 없음 (2개). 상세는 `iocs/jarm.txt` 참고.
+- `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — Cobalt Strike 기본 팀서버(OpenJDK 11) — 일반 헌팅 신호, 캠페인 특정 아님 — ⚠️ (미검증)
+- `07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1` — 동일 기본값의 대체 보고치(Java 11 SSL stack) — ⚠️ (미검증)
 
 ## 워터마크 · 맬리어블 프로파일
-변경 없음 — 전체 내역은 `iocs/watermarks-and-profiles.md` 참고 (이번 실행 재확인 로그 추가됨, recordedfuture.com/thedfirreport.com/group-ib.com 차단 확정).
+- **0** — LOW SIGNAL. 크랙판 공통 기본값, 차단 신호 아님.
+- **987654321** — "rogue" Cobalt Strike C2 서버 클러스터(스캐너 탐지만, `needs-review`에 등재) 공유 워터마크. ThreatBook이 북한 연계 우즈베키스탄 캠페인과 낮은 신뢰도로 연계 — ⚠️ (미검증)
+- **1473793097 / 1357776117** — Silent Push "The Gentlemen" 랜섬웨어 제휴 조직(CountLoader → Cobalt Strike 체인)의 워터마크값 — ⚠️ (미검증, 1차 출처 미확보)
+- **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 전용 BEACON 워터마크 해시, Mandiant 검증 — verified
+- 상세 내용은 `iocs/watermarks-and-profiles.md` 참조 (누적 기록).
 
 ## 파일 해시 (2)
-변경 없음. 상세는 `iocs/sha256.txt` 참고.
+### SHA-256
+- 5f37b85687780c089607670040dbb3da2749b91b8adc0aa411fd6280b5fa7103 — beacon — BlackByte 랜섬웨어 침해(ProxyShell Exchange 익스플로잇) — verified
+- 7c1f99dca8e5a7897892f9d224a6495023a2cfd2671697d229d355978c415ed2 — loader — KnowledgeDeliver/CVE-2026-5426 — verified
 
 ## 호스트 IOC · 행위
-- UNC4393/BASTA DNS BEACON 서브호스트 네이밍 패턴 (`h.dns.<C2>`, `ridoj4.<8char>.dns.<C2>` 등) — 기존 기록, 변경 없음.
-- UNC2628/DarkSide — Slack API를 통한 C3-over-Slack BEACON 프록싱, SMB named pipe `\\.\pipe\UIA_PIPE_*` — 기존 기록, 변경 없음.
+- UNC4393/BASTA DNS BEACON 서브도메인 명명 규칙: `h.dns.<C2도메인>`, `ridoj4.<8자>.dns.<C2도메인>`, `jzz.<8자>.dns.<C2도메인>`, `wnh.<8자>.dns.<C2도메인>` — Mandiant 검증
+- UNC2628/DarkSide: SMB BEACON named pipe `\.\pipe\UIA_PIPE_*`, Windows 서비스명 `CitrixInit`, 도메인 계정 `spservice` — Mandiant 검증
 
 ## 이번 실행 변경사항
-- 신규 C2: 없음 (block-safe 기준)
+- 신규 C2: 없음
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
-- 검토 필요 신규 추가: 111.228.62.67, status.jarredlike.xyz (스캐너/피드 탐지, 캠페인 귀속 없음)
+- 신규 검토 필요 항목: 45.67.229.97 (ThreatFox IOC #642546, 만료 2026-04-01, 귀속 없음)
+- 참고: unit42.paloaltonetworks.com, hunt.io가 이번 run에서 처음으로 DNS 해석 실패가 재확인되어 차단된 도메인으로 공식 분류됨 (이전에는 "untested"였음)
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -57,14 +60,14 @@
 92.204.160.240
 ```
 
+(`iocs/domains.txt`는 현재 공란.)
+
 ## 출처
-- [Google Cloud Blog — Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence) — 확인일 2026-11-02 — fetched (최신 목록 확인, Cobalt Strike 관련 신규 콘텐츠 없음)
-- [Unit42 — Cobalt Strike Malleable C2](https://unit42.paloaltonetworks.com/cobalt-strike-malleable-c2/) — blocked (DNS 미해결)
-- [Unit42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — blocked (DNS 미해결)
-- [Recorded Future — RedNovember](https://www.recordedfuture.com/research/rednovember-targets-government-defense-and-technology-organizations) — blocked (DNS 미해결, 확정)
-- [The DFIR Report](https://thedfirreport.com) — blocked (DNS 미해결, 확정)
-- [Silent Push — The Gentlemen Ransomware](https://www.silentpush.com/blog/gentlemen-ransomware/) — blocked (DNS 미해결)
-- [Group-IB Blog](https://group-ib.com/blog/) — blocked (DNS 미해결, 확정)
-- ThreatFox IOC Database (abuse.ch) — WebSearch 스니펫만 확인, 원문 페이지 fetch 차단 — 111.228.62.67:80 신규 확인
-- ANY.RUN Malware Trends — WebSearch 스니펫만 확인 — status.jarredlike.xyz 신규 확인
-- 이전 실행에서 기록된 모든 출처는 `iocs/watermarks-and-profiles.md` 참고
+- [Google Cloud Blog — Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-11-03 — fetched (Cobalt Strike 관련 신규 콘텐츠 없음)
+- unit42.paloaltonetworks.com/cobalt-strike-team-server/ — blocked (DNS)
+- unit42.paloaltonetworks.com/cobalt-strike-malleable-c2/ — blocked (DNS)
+- hunt.io/blog/guide-hunting-cobalt-strike-part-4-c2-feeds-api — blocked (DNS)
+- silentpush.com/blog/gentlemen-ransomware/ — blocked (DNS)
+- threatbook.io/blog/suspected-north-korea-linked-hackers... — blocked (DNS)
+- netlas.io/blog (RST Cloud JARM hunting) — blocked (DNS)
+- socradar.io (StrikeShark IOC Radar report) — blocked (DNS)
