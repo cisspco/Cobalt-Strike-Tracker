@@ -1,61 +1,67 @@
-# Cobalt Strike Snapshot — 2026-11-04 UTC
+# Cobalt Strike Snapshot — 2026-11-05 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/topics/threat-intelligence, microsoft.com/en-us/security/blog (검색)
-- 페치 차단: dailysecurityreview.com, vectra.ai, reliaquest.com, securitricks.com, techtarget.com, malpedia.caad.fkie.fraunhofer.de (모두 신규 DNS 해석 실패 확인 — 기존 차단 목록에 추가됨)
-- 검증: 2 / 미검증: 5 / 검토 필요: 39
+- 페치 성공: 없음
+- 페치 차단: connectwise.com, infoblox.com, netlas.io, unit42.paloaltonetworks.com (및 .md 변형), techcentral.co.za, it-daily.net, blog.eset.ie, scworld.com (모두 이번 실행에서 DNS 해석 실패로 신규 확인됨, microsoft.com·cloud.google.com 외 모두 차단된 기존 목록과 일치)
+- 검증: 2 / 미검증: 6 / 검토 필요: 41
 
 ## 최근 캠페인 (최근 60일)
 
-이번 실행에서 새로 확인된 "최근 60일" 공격자-C2-귀속 캠페인 없음(호스트 IOC 기준). 아래는 검색 스니펫에서만 확인된 미검증 캠페인/귀속 맥락 — 어떤 것도 구체적인 C2 IP/도메인/해시를 포함하지 않음:
+캠페인 수준의 전적으로 새로운 보고는 이번 실행에서 없음 (2026-10-13 이후 지속). 기존에 추적 중인 캠페인(StrikeShark/SharkLoader, The Gentlemen/CountLoader, RedNovember, Ghostwriter, UNG0002 등)에 대한 세부 보강만 발생.
 
-### UNG0002 (창저우대학교 대상) ⚠️ (미검증)
-- 대상: 중국 창저우대학교
-- Cobalt Strike 역할: macOS 폴더 구조 내 은닉(상세 체인 미확인)
-- 귀속: Seqrite, medium-high confidence (검색 스니펫)
-- 출처: dailysecurityreview.com (페치 차단, 신규)
-
-### Ghostwriter (업데이트) ⚠️ (미검증)
-- 대상: 우크라이나/폴란드 정부기관
-- 신규 귀속: ESET이 "Belarus-aligned"로 귀속(moderate-to-high confidence), 2026-03부터 활동 — 기존 기록된 지오펜싱 PDF 전달 체인과 일치
-- 출처: 검색 스니펫 (ESET, 미페치)
-
-### "The Gentlemen" / CountLoader (업데이트) ⚠️ (미검증)
-- 신규 맥락: CountLoader는 크랙 소프트웨어 배포 사이트를 통해 확산되며 Cobalt Strike와 AdaptixC2를 모두 전달; 이 광범위한 배포의 운영자는 미귀속
-- 출처: 검색 스니펫
+### "The Gentlemen" 랜섬웨어 제휴자 — CountLoader + Cobalt Strike ⚠️ (미검증)
+- 대상: 특정되지 않음 (LockBit·Black Basta·Qilin 제휴 이력을 가진 연쇄 랜섬웨어 제휴자)
+- 초기 침투: CountLoader (크랙/불법 복제 소프트웨어 유포 사이트 경유)
+- Cobalt Strike 역할: CountLoader → Cobalt Strike 페이로드 전달 → 랜섬웨어
+- 관측 시점: 2026-02 (최초 탐지)
+- 신규 IOC: C2 IP **91.107.247[.]163** — Silent Push가 Check Point의 공개 침해대응 보고서와 교차 매칭; 출처 미페치(silentpush.com, DNS 불가) — `iocs/unverified-ips.txt`에 미검증 공격자 C2로 추가
+- 출처: Silent Push "No Place to Hide..." (silentpush.com, 차단됨 — 검색 스니펫만)
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
-변경 없음 — 기존 6개 IP 유지 (도메인 0건). 상세는 `iocs/ips.txt` / `iocs/domains.txt` 참고.
+- 108.61.242[.]65 — KnowledgeDeliver/CVE-2026-5426 또는 BlackByte 관련 검증된 캠페인 C2 — verified
+- 109.206.243[.]59 — 상동 — verified
+- 146.70.78[.]43 — 상동 — verified
+- 45.150.108[.]213 — 상동 — verified
+- 87.120.254[.]39 — 상동 — verified
+- 92.204.160[.]240 — 상동 — verified
 
-## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (39)
-변경 없음 — 이번 실행에서 구체적인 신규 호스트 값 확보 실패(ThreatFox 검색 스니펫은 IOC ID만 노출, 실제 IP/도메인 값은 threatfox.abuse.ch 페치 차단으로 확인 불가). 전체 목록은 `iocs/needs-review.txt` 참조.
+(도메인 없음)
+
+## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (41)
+- 기존 39건 유지 (UNC2628/DarkSide 2021년 구 인프라, ThreatFox 일반 태그, Vermilion Strike 등 — 상세는 `iocs/needs-review.txt` 참조)
+- **신규**: 197.51.170[.]131 — Middle East Malicious Infrastructure Report (securitricks.com, 차단됨); 2026년 2-5월 지역 집계(98개 공급자, 1,350+ C2), 개별 캠페인 귀속 없음 — 스캐너 탐지만, 차단 금지
+- **신규**: 5.109.182[.]231 — 상동 리포트, 상동 이유 — 차단 금지
 
 ## JARM 헌팅 신호 (차단 용도 아님)
-변경 없음 (2건). `iocs/jarm.txt` 참조.
+- `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — Cobalt Strike 기본 팀서버 JARM (OpenJDK 11), 일반 헌팅 신호
+- `07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1` — 동일 기본값의 대체 보고값 (Java 11 SSL 스택), 2차 후보로 기록
 
 ## 워터마크 · 맬리어블 프로파일
-- **0** — LOW SIGNAL. 크랙판 공통 기본값, 차단 신호 아님.
-- 신규 캠페인 맥락(UNG0002, Ghostwriter/ESET 업데이트, CountLoader/AdaptixC2 확장)이 `iocs/watermarks-and-profiles.md`에 기록됨 — 구체적 워터마크 값은 확인되지 않음.
-- Middle East 인프라 보고서(securitricks.com, 2026-02~05, 1,350+ C2, 98 provider) — Cobalt Strike는 Tactical RMM/Sliver와 함께 언급된 프레임워크 중 하나; 집계 스캐너 수치일 뿐 개별 귀속 없음 — 트렌드 맥락으로만 기록.
-- Fox-IT Cobalt Strike Beacon Corpus(2026-10, 데이터셋 공개) — 캠페인 아님, 참고용으로만 기록.
-- 상세 내용은 `iocs/watermarks-and-profiles.md` 참조 (누적 기록).
+- **0** — 크랙판 공통값, 차단 신호 아님 (LOW SIGNAL)
+- **1** — 크랙판 공통값, Talos 보고 (미검증), LOW SIGNAL
+- **100000000 / 666666666 / 987654321 / 678358251 / 688983459** — 크랙판/공유 클러스터 값, 개별 캠페인 귀속 없음 또는 약한 귀속, 차단 신호로 사용 금지
+- **1473793097 / 1357776117** — "The Gentlemen"/CountLoader 체인 특정 값 (미검증, Silent Push)
+- **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 특정 워터마크 해시 (검증됨, Mandiant)
+- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적)
 
 ## 파일 해시 (2)
 ### SHA-256
-- 5f37b85687780c089607670040dbb3da2749b91b8adc0aa411fd6280b5fa7103 — beacon — BlackByte 랜섬웨어 침해(ProxyShell Exchange 익스플로잇) — verified
+- 5f37b85687780c089607670040dbb3da2749b91b8adc0aa411fd6280b5fa7103 — beacon — BlackByte ransomware intrusion (ProxyShell Exchange exploitation) — verified
 - 7c1f99dca8e5a7897892f9d224a6495023a2cfd2671697d229d355978c415ed2 — loader — KnowledgeDeliver/CVE-2026-5426 — verified
 
 ## 호스트 IOC · 행위
-변경 없음. 기존 UNC4393/BASTA, UNC2628/DarkSide 행위 패턴 참조 (`iocs/watermarks-and-profiles.md`).
+- SMB BEACON named pipe `\\.\pipe\UIA_PIPE_*` (UNC2628/DarkSide)
+- DNS BEACON 서브도메인 패턴 `h.dns.<C2 domain>`, `ridoj4.<8자>.dns.<C2 domain>` 등 (UNC4393/BASTA)
+- 자세한 내용은 `iocs/watermarks-and-profiles.md` 참조
 
 ## 이번 실행 변경사항
-- 신규 C2: 없음
+- 신규 C2 (검증, 차단 대상): 없음
+- 신규 C2 (미검증, 차단 대상 아님): 91.107.247[.]163 (The Gentlemen/CountLoader, unverified-ips.txt)
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
-- 신규 미검증 캠페인 맥락: UNG0002(창저우대학교), Ghostwriter ESET 귀속 업데이트, CountLoader/AdaptixC2 확산 맥락, Middle East 인프라 집계 보고서, Fox-IT Beacon Corpus 데이터셋 — 모두 `iocs/watermarks-and-profiles.md`에만 기록, 차단 가능 호스트 없음
-- 신규 차단 확인 도메인: dailysecurityreview.com, vectra.ai, reliaquest.com, securitricks.com, techtarget.com, malpedia.caad.fkie.fraunhofer.de
-- 조용한 날 지속 (캠페인/검토 항목 기준 2026-10-13 이후 변동 없음 연속)
+- 검토 필요 신규 추가: 197.51.170[.]131, 5.109.182[.]231 (Middle East 인프라 리포트, 스캐너 집계만)
+- 신규 차단 확인 도메인: connectwise.com, infoblox.com, netlas.io, techcentral.co.za, it-daily.net, blog.eset.ie, scworld.com (unit42.paloaltonetworks.com은 기존 차단 재확인)
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -69,14 +75,11 @@
 92.204.160.240
 ```
 
-(`iocs/domains.txt`는 현재 공란.)
-
 ## 출처
-- [Google Cloud Blog — Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-11-04 — fetched (Cobalt Strike 관련 신규 콘텐츠 없음)
-- [Microsoft Security Blog search](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 2026-11-04 — fetched (2021 Solorigate/TEARDROP 글 외 신규 CS 콘텐츠 없음)
-- dailysecurityreview.com/?p=39938 (UNG0002) — blocked (DNS, 신규 확인)
-- vectra.ai/topics/cobalt-strike — blocked (DNS, 신규 확인)
-- reliaquest.com/blog/cobalt-strike-servers-ransomware — blocked (DNS, 신규 확인)
-- securitricks.com (Middle East infra report) — blocked (DNS, 신규 확인)
-- techtarget.com (job seekers campaign) — blocked (DNS, 신규 확인)
-- malpedia.caad.fkie.fraunhofer.de/actor/cobalt — blocked (DNS, 신규 확인)
+- [StrikeShark: Investigating a New Campaign Delivering Cobalt Strike Through SharkLoader](https://community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026) — 2026-06-25 — blocked
+- [No Place to Hide: Following a Serial Ransomware Affiliate ... to The Gentlemen](https://www.silentpush.com/blog/gentlemen-ransomware/) — 2026-02 — blocked
+- [Middle East Malicious Infrastructure Report](https://securitricks.com/attackreports/middle-east-malicious-infrastructure-report-1350-c2-servers-mapped-across-98-providers) — 2026-05 — blocked
+- [Cobalt Strike: Complete detection and defense guide](https://www.vectra.ai/topics/cobalt-strike) — undated — blocked
+- [How we hunt C2 infrastructure at RST Cloud using Netlas](https://netlas.io/blog/%D1%812_hunting_by_rst_cloud/) — 2026-03 — blocked
+- [Fake Kaseya updates serving up Cobalt Strike](https://connectwise.com/resources/fake-kaseya-updates-serving-up-cobalt-strike) — undated — blocked
+- [Cobalt Strike malware campaign targets job seekers](https://www.techtarget.com/cybersecurity/news/252525560/Cobalt-Strike-malware-campaign-targets-job-seekers) — undated — blocked (from prior run)
