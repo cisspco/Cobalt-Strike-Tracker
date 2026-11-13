@@ -1,19 +1,17 @@
-# Cobalt Strike Snapshot — 2026-11-12 UTC
+# Cobalt Strike Snapshot — 2026-11-13 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/topics/threat-intelligence (신규 Cobalt Strike 콘텐츠 없음), www.microsoft.com/en-us/security/blog (검색, 신규 콘텐츠 없음 — 2021년 Solorigate/TEARDROP 게시물만 재노출)
-- 페치 차단(신규 시도, 이번 실행에서 최초로 차단 확인): hivesecurity.gitlab.io, www.securityscientist.net, s4e.io, hermes-codex.vercel.app, intelinsights.substack.com — 모두 ENOTFOUND
-- 페치 차단(기존 확인 도메인 재시도): www.silentpush.com — ENOTFOUND (기존 차단 목록과 일치)
+- 페치 성공: cloud.google.com/blog/topics/threat-intelligence (신규 Cobalt Strike IOC 없음), cloud.google.com/.../artex-and-friends-enter-agentic-offensive-frameworks (2026-10-30, Cobalt Strike는 역사적 사례로만 1회 언급, C2 IOC 없음), www.microsoft.com/en-us/security/blog (검색, 신규 콘텐츠 없음 — 2021/2022년 게시물만 재노출)
+- 페치 차단(신규 시도, 이번 실행에서 최초로 시도·차단 확인): unit42.paloaltonetworks.com, thedfirreport.com, www.recordedfuture.com, www.group-ib.com, research.checkpoint.com, hunt.io — 모두 ENOTFOUND. (프롬프트의 "UNTESTED" 후보 4곳 중 recordedfuture.com·unit42·thedfirreport·group-ib 전부 이번 실행에서 차단으로 확인됨 — 장기적으로 사용 불가)
 - 검증: 누적 9건 (C2 IP 6 + 해시 2 + GCTI 크랙판 배경자료 1) / 미검증: 누적 6건 (C2 IP 1 + 도메인 5) / 검토 필요: 46
 
 ## 최근 캠페인 (최근 60일)
 
-캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (2026-10-13 이후 지속, 30일 연속 조용한 날 — 차단 대상 기준). 검색 스니펫에서 2건의 신규(미검증) 단서가 노출되었으나 구체적 IOC 값이 없어 차단 목록에는 반영하지 않음:
+캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (2026-10-13 이후 지속, 31일 연속 조용한 날 — 차단 대상 기준). 이번 실행에서 신규로 확인된 항목:
 
-- **INCRANSOM 랜섬웨어** — PsExec, Rclone, 쉐도우 카피 삭제 도구와 함께 Cobalt Strike를 사용한다고 보고됨 (securityarsenal.com, ~2026-08, 5일간 10건 피해자 게시). 60일 기준 초과, 구체적 C2 IOC 없음 — 배경 정보로만 기록.
-- **Silent Push 2차 Gentlemen 보고서** ("What Recent Reporting Gets Right About The Gentlemen RaaS...") — 기존 C2 IP 91.107.247[.]163 외 추가 귀속 여부 확인 시도, 페치 차단되어 미확인.
+- **ARTEX (에이전틱 공격용 C2 플랫폼)** — Google Threat Intelligence Group/Mandiant, 2026-10-30 게시. 신규 에이전틱 오펜시브 프레임워크를 다루지만, Cobalt Strike는 "과거 유사 사례"로 한 차례만 언급됨 (펜테스트/레드팀 플랫폼이 악용된 선례). 이 캠페인 자체는 Cobalt Strike를 구성요소로 사용하지 않아 Cobalt Strike 전용 IOC로 기록하지 않음 — 배경 정보로만 남김.
 
-- 참고(재확인, 변경 없음): SNOWLIGHT/GoCobaltStrike, Aur0ra 랜섬웨어, 가짜 KeePass→ESXi/Black Basta IAB 워터마크, Bumblebee→Cobalt Strike, FrostBeacon, Silver Dragon, UNG0002(Dragon Whistle/Cobalt Whisper/AmberMist), StrikeShark/SharkLoader, The Gentlemen/CountLoader, Ghostwriter, RedNovember — 이번 실행 검색에서 재노출, 상세 변경 없음.
+- 참고(재확인, 변경 없음): The Gentlemen/CountLoader (91.107.247[.]163, Silent Push/Check Point), SNOWLIGHT/GoCobaltStrike, Aur0ra 랜섬웨어, FrostBeacon, Nitrogen→Sliver/BlackCat, Bumblebee→Cobalt Strike, RedNovember, 가짜 KeePass→ESXi/Black Basta IAB 워터마크 — 이번 실행 검색에서 재노출, 상세 변경 없음.
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
 - 108.61.242[.]65 — KnowledgeDeliver/CVE-2026-5426 또는 BlackByte 관련 검증된 캠페인 C2 — verified
@@ -31,14 +29,13 @@
 ## JARM 헌팅 신호 (차단 용도 아님)
 - `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — Cobalt Strike 기본 팀서버 JARM (OpenJDK 11), 일반 헌팅 신호
 - `07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1` — 동일 기본값의 대체 보고값 (Java 11 SSL 스택), 2차 후보로 기록
-- 참고: 이번 실행 검색 스니펫에서 socat/iptables로 리디렉션된 팀서버용 세 번째 JARM 해시(`2ad2ad16d2ad2ad00042d42d00042d...`)가 언급되었으나 값이 잘려 있고 출처(위키 미러)의 신뢰도가 낮아 기록하지 않음.
 
 ## 워터마크 · 맬리어블 프로파일
 - **0 / 1** — 크랙판 공통값, 차단 신호 아님 (LOW SIGNAL)
 - **100000000 / 666666666 / 987654321 / 678358251 / 688983459** — 크랙판/공유 클러스터 값, 개별 캠페인 귀속 없음 또는 약한 귀속, 차단 신호로 사용 금지.
 - **1473793097 / 1357776117** — "The Gentlemen"/CountLoader 체인 특정 값 (미검증, Silent Push)
 - **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 특정 워터마크 해시 (검증됨, Mandiant)
-- 전체 목록 및 이번 실행 신규 미검증 노트(INCRANSOM, Silent Push 2차 Gentlemen 보고서)는 `iocs/watermarks-and-profiles.md` 참조 (누적)
+- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적, 이번 실행 신규 추가 없음)
 
 ## 파일 해시 (2)
 ### SHA-256
@@ -57,8 +54,8 @@
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
 - 검토 필요 신규 추가: 없음
-- 신규 미검증 캠페인/기법 노트 추가: INCRANSOM 랜섬웨어 (IOC 값 없음), Silent Push 2차 Gentlemen 보고서 참조 (페치 차단, 신규 IOC 없음) — `iocs/watermarks-and-profiles.md`에만 기록
-- 네트워크 범위 확인: hivesecurity.gitlab.io, www.securityscientist.net, s4e.io, hermes-codex.vercel.app, intelinsights.substack.com — 이번 실행에서 신규로 차단 확인 (ENOTFOUND)
+- 신규 캠페인 배경 노트: ARTEX 에이전틱 C2 플랫폼 (Cobalt Strike는 역사적 언급뿐, 전용 IOC 없음 — 블로터에 기록하지 않음)
+- 네트워크 범위 확인: unit42.paloaltonetworks.com, thedfirreport.com, www.recordedfuture.com, www.group-ib.com, research.checkpoint.com, hunt.io — 이번 실행에서 신규로 차단 확인 (ENOTFOUND). 프롬프트가 지정한 "UNTESTED" 후보 사이트 전부가 이 샌드박스에서는 도달 불가능함이 확인됨.
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -73,11 +70,12 @@
 ```
 
 ## 출처
-- [Google Cloud — Threat Intelligence Blog](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-11-12 — fetched (신규 CS 콘텐츠 없음)
-- [Microsoft Security Blog — "cobalt strike" 검색](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 2026-11-12 — fetched (신규 CS 콘텐츠 없음)
-- hivesecurity.gitlab.io — 2026-11-12 — blocked (ENOTFOUND, 신규 시도)
-- www.securityscientist.net — 2026-11-12 — blocked (ENOTFOUND, 신규 시도)
-- s4e.io — 2026-11-12 — blocked (ENOTFOUND, 신규 시도)
-- hermes-codex.vercel.app — 2026-11-12 — blocked (ENOTFOUND, 신규 시도)
-- intelinsights.substack.com — 2026-11-12 — blocked (ENOTFOUND, 신규 시도)
-- www.silentpush.com — 2026-11-12 — blocked (ENOTFOUND, 기존 확인)
+- [Google Cloud — Threat Intelligence Blog](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-11-13 — fetched (신규 CS 콘텐츠 없음)
+- [Google Cloud — "ARTEX and Friends: Enter Agentic Offensive Frameworks"](https://cloud.google.com/blog/topics/threat-intelligence/artex-and-friends-enter-agentic-offensive-frameworks) — 2026-10-30 — fetched (Cobalt Strike 역사적 언급뿐, IOC 없음)
+- [Microsoft Security Blog — "cobalt strike" 검색](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 2026-11-13 — fetched (신규 CS 콘텐츠 없음)
+- unit42.paloaltonetworks.com — 2026-11-13 — blocked (ENOTFOUND, 신규 시도)
+- thedfirreport.com — 2026-11-13 — blocked (ENOTFOUND, 신규 시도)
+- www.recordedfuture.com — 2026-11-13 — blocked (ENOTFOUND, 신규 시도)
+- www.group-ib.com — 2026-11-13 — blocked (ENOTFOUND, 신규 시도)
+- research.checkpoint.com — 2026-11-13 — blocked (ENOTFOUND, 신규 시도)
+- hunt.io — 2026-11-13 — blocked (ENOTFOUND, 신규 시도)
