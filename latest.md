@@ -1,24 +1,22 @@
-# Cobalt Strike Snapshot — 2026-11-15 UTC
+# Cobalt Strike Snapshot — 2026-11-16 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse (2022-11-18 GCTI 크랙판 카탈로그 — 기존 자료 재확인, 신규 내용 없음)
-- 페치 차단: unit42.paloaltonetworks.com/cobalt-strike-team-server/, unit42.paloaltonetworks.com/attackers-exploit-public-cobalt-strike-profiles/, thedfirreport.com/2025/01/27/cobalt-strike-and-a-pair-of-socks-lead-to-lockbit-ransomware/, thedfirreport.com/?p=48447 (Lunar Spider), www.silentpush.com/blog/gentlemen-ransomware/, hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity, securelist.com/strikeshark-campaign/120326/, www.recordedfuture.com/research/2025-year-in-review-malicious-infrastructure, msrc.microsoft.com/blog/2022/10/hunting-for-cobalt-strike-mining-and-plotting-for-fun-and-profit — 전부 ENOTFOUND (모두 이전 실행에서도 차단 확인된 호스트와 동일 패턴)
-- 검증: 누적 17건 (변경 없음) / 미검증: 누적 7건 (IOC 값 없는 캠페인 언급 2건이 신규로 등장했으나 구체적 IP/도메인/해시/워터마크 값이 없어 IOC 수에는 반영되지 않음) / 검토 필요: 46건 (변경 없음)
+- 페치 성공: microsoft.com/en-us/security/security-insider/threat-landscape/manatee-tempest (Manatee Tempest/EvilCorp — Cobalt Strike 로더 공급 역할, 신규 배경 귀속 정보, IOC 값 없음), cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse (2022-11-18 GCTI 크랙판 카탈로그 — 기존 자료 재확인)
+- 페치 차단: www.silentpush.com/blog/gentlemen-ransomware/, research.checkpoint.com/2026/dfir-report-the-gentlemen/, hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity, hunt.io/blog/tricks-treats-threats-cobalt-strike-the-goblin-lurking-in-plain-sight, securelist.com/strikeshark-campaign/120326/, thedfirreport.com/?p=48447 (Lunar Spider), www.seqrite.com/blog/?p=9560 (FrostBeacon), unit42.paloaltonetworks.com/cobalt-strike-team-server/, community.gurucul.com/articles/ThreatResearch/StrikeShark..., threatcluster.io, radar.offseq.com — 전부 ENOTFOUND (기존에 차단 확인된 호스트와 동일 패턴)
+- 검증: 누적 17건 (IOC 값 기준, 변경 없음) / 미검증: 누적 7건 (변경 없음) / 검토 필요: 46건 (변경 없음)
 
 ## 최근 캠페인 (최근 60일)
 
-캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음. 다만 검색 스니펫에서 두 건의 새로운 DFIR Report 기사 제목이 처음 노출되어 아래 기록 (기사 본문 접근 차단, IOC 값 없음, 날짜상 60일 창 밖 또는 불명):
+캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음. 신규로 확보한 내용은 아래 배경 귀속 노트 1건뿐 (구체적 IOC 값 없음):
 
-### Cobalt Strike + SOCKS 프록시 → LockBit 랜섬웨어 (DFIR Report, 2025-01-27, 60일 창 밖)
-- Cobalt Strike 역할: "Windows Media Configuration Utility"를 위장한 Beacon이 초기 사후침투 임플란트로 사용, SOCKS 프록시 체이닝을 거쳐 LockBit 랜섬웨어 배포로 이어짐
-- 관측 시점: 2025-01 (보고서 게시일 2025-01-27)
-- 출처: thedfirreport.com (fetch blocked, 미검증)
+### Manatee Tempest (구 DEV-0243, EvilCorp) — Cobalt Strike 로더 공급 (배경 정보, 60일 창 밖)
+- Cobalt Strike 역할: 자체 C2가 아닌, 타 행위자에게 커스텀 Cobalt Strike 로더를 공급하는 역할로 Microsoft가 기술
+- 랜섬웨어 계보: WastedLocker(Mustard Tempest와 협력) → 자체 PhoenixLocker/Macaw → LockBit 2.0(2021-11부터)
+- 관측 시점: 페이지 표기일 2024-01-25 (지속 유효한 행위자 프로필)
+- 출처: microsoft.com/en-us/security/security-insider/threat-landscape/manatee-tempest (fetched, verified)
+- 참고: 기존 search-snippet 요약이 언급했던 RansomHub 연관은 이번 실행의 원문 전체 fetch에서 확인되지 않음 — 스니펫 요약을 대체
 
-### "Lunar Spider" — 약 2개월간 지속된 침투 (DFIR Report, 날짜 불명)
-- Cobalt Strike 역할/IOC: 스니펫에 구체적 정보 없음 (행위자명만 확인)
-- 출처: thedfirreport.com (fetch blocked, 미검증)
-
-- 참고(재확인, 변경 없음): StrikeShark/SharkLoader, The Gentlemen/CountLoader(워터마크 1473793097/1357776117, C2 91.107.247.163), RedNovember/Pantegana, SNOWLIGHT/GoCobaltStrike, Nitrogen(워터마크 678358251), Aur0ra 랜섬웨어, Ghostwriter, UNG0002/Dragon Whistle, Silver Dragon(APT41) — 이번 실행 검색에서 재노출, 상세 변경 없음.
+- 참고(재확인, 변경 없음): StrikeShark/SharkLoader, The Gentlemen/CountLoader(워터마크 1473793097/1357776117, C2 91.107.247.163 — 미검증), RedNovember/Pantegana, SNOWLIGHT/GoCobaltStrike, Nitrogen(워터마크 678358251), Aur0ra 랜섬웨어, FrostBeacon(Seqrite, 2025-11), Silver Dragon(APT41) — 이번 실행 검색에서 재노출, 상세 변경 없음.
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
 - 108.61.242[.]65 — KnowledgeDeliver/CVE-2026-5426 또는 BlackByte 관련 검증된 캠페인 C2 — verified
@@ -44,7 +42,8 @@
 - **1473793097 / 1357776117** — "The Gentlemen"/CountLoader 체인 특정 값 (미검증, Silent Push)
 - **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 특정 워터마크 해시 (검증됨, Mandiant)
 - **666** — Storm-0501 고유 변조 워터마크 (검증됨, Microsoft, 2024-09-26)
-- 전체 목록 및 신규 캠페인 언급 2건은 `iocs/watermarks-and-profiles.md` 참조 (누적)
+- 신규: Manatee Tempest/EvilCorp — Cobalt Strike 로더 공급자 역할 확인 (검증됨, Microsoft, IOC 값 없음)
+- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적)
 
 ## 파일 해시 (8)
 ### SHA-256
@@ -72,9 +71,8 @@
 - 분류 변경: 없음
 - 검토 필요 신규 추가: 없음
 - 신규 JARM 후보: 없음
-- 신규 워터마크: 없음
-- 신규 캠페인 배경 노트: 2건 (DFIR Report "Cobalt Strike and a Pair of SOCKS Lead to LockBit Ransomware", 2025-01-27; DFIR Report "Lunar Spider" 침투 사례) — 둘 다 미검증(fetch 차단), IOC 값 없음
-- 네트워크 범위 확인: unit42.paloaltonetworks.com, thedfirreport.com, silentpush.com, hunt.io, securelist.com, recordedfuture.com, msrc.microsoft.com — 이번 실행에서 재시도, 전부 차단 확인 (ENOTFOUND). cloud.google.com 특정 기사 URL은 이번 실행에서도 재차 전체 본문 확보 성공 (2022년 기존 자료, 신규 내용 없음).
+- 신규 워터마크/배경 귀속 노트: 1건 (Manatee Tempest/EvilCorp — Cobalt Strike 로더 공급자, Microsoft 원문 전체 확인, IOC 값 없음)
+- 네트워크 범위 확인: silentpush.com, research.checkpoint.com, hunt.io, securelist.com, thedfirreport.com, seqrite.com, unit42.paloaltonetworks.com, community.gurucul.com, threatcluster.io, radar.offseq.com — 전부 차단 확인 (ENOTFOUND). microsoft.com, cloud.google.com은 이번 실행에서도 정상 접근 및 신규(Manatee Tempest 프로필) 확보.
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -89,13 +87,16 @@
 ```
 
 ## 출처
+- [Microsoft Security Insider — "Manatee Tempest" threat-actor profile](https://www.microsoft.com/en-us/security/security-insider/threat-landscape/manatee-tempest) — 2024-01-25 — fetched
 - [Google Cloud / GCTI — "Making Cobalt Strike harder for threat actors to abuse"](https://cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse) — 2022-11-18 — fetched (재확인)
-- unit42.paloaltonetworks.com/cobalt-strike-team-server/ — 2026-11-15 — blocked (ENOTFOUND)
-- unit42.paloaltonetworks.com/attackers-exploit-public-cobalt-strike-profiles/ — 2026-11-15 — blocked (ENOTFOUND)
-- thedfirreport.com/2025/01/27/cobalt-strike-and-a-pair-of-socks-lead-to-lockbit-ransomware/ — 2026-11-15 — blocked (ENOTFOUND)
-- thedfirreport.com/?p=48447 (Lunar Spider) — 2026-11-15 — blocked (ENOTFOUND)
-- www.silentpush.com/blog/gentlemen-ransomware/ — 2026-11-15 — blocked (ENOTFOUND)
-- hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity — 2026-11-15 — blocked (ENOTFOUND)
-- securelist.com/strikeshark-campaign/120326/ — 2026-11-15 — blocked (ENOTFOUND)
-- www.recordedfuture.com/research/2025-year-in-review-malicious-infrastructure — 2026-11-15 — blocked (ENOTFOUND)
-- msrc.microsoft.com/blog/2022/10/hunting-for-cobalt-strike-mining-and-plotting-for-fun-and-profit — 2026-11-15 — blocked (ENOTFOUND)
+- www.silentpush.com/blog/gentlemen-ransomware/ — 2026-11-16 — blocked (ENOTFOUND)
+- research.checkpoint.com/2026/dfir-report-the-gentlemen/ — 2026-11-16 — blocked (ENOTFOUND)
+- hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity — 2026-11-16 — blocked (ENOTFOUND)
+- hunt.io/blog/tricks-treats-threats-cobalt-strike-the-goblin-lurking-in-plain-sight — 2026-11-16 — blocked (ENOTFOUND)
+- securelist.com/strikeshark-campaign/120326/ — 2026-11-16 — blocked (ENOTFOUND)
+- thedfirreport.com/?p=48447 (Lunar Spider) — 2026-11-16 — blocked (ENOTFOUND)
+- www.seqrite.com/blog/?p=9560 (FrostBeacon) — 2026-11-16 — blocked (ENOTFOUND)
+- unit42.paloaltonetworks.com/cobalt-strike-team-server/ — 2026-11-16 — blocked (ENOTFOUND)
+- community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026 — 2026-11-16 — blocked (ENOTFOUND)
+- threatcluster.io/cluster/operation-frostbeacon-targets-finance-and-legal-sectors-with-909d9067 — 2026-11-16 — blocked (ENOTFOUND)
+- radar.offseq.com/threat/chinese-hackers-rednovember-target-global-governme-5d534e87 — 2026-11-16 — blocked (ENOTFOUND)
