@@ -1,13 +1,13 @@
-# Cobalt Strike Snapshot — 2026-11-19 UTC
+# Cobalt Strike Snapshot — 2026-11-20 UTC
 
 ## 수집 상태
-- 페치 성공: www.microsoft.com/en-us/security/blog/?s=cobalt+strike (검색 결과 재확인, 60일 이내 신규 CS 관련 게시물 없음, 최신 항목은 2024-09-26/2025-08-27 Storm-0501 업데이트), cloud.google.com/blog/topics/threat-intelligence (현재 블로그 목록 재확인, 글 제목만 노출, 신규 CS 관련 콘텐츠 확인 안 됨)
-- 페치 차단: unit42.paloaltonetworks.com, thedfirreport.com, www.silentpush.com, research.checkpoint.com, securelist.com, hunt.io, community.gurucul.com (모두 재시도, 전부 ENOTFOUND로 재확인 — 기존 차단 목록과 일치, 신규 차단 도메인 없음)
+- 페치 성공: cloud.google.com/blog/topics/threat-intelligence/defining-cobalt-strike-components (재확인, 2021-12-10 게시물 — malleable profile/watermark 개념 설명, 신규 CS 관련 콘텐츠 없음), www.microsoft.com/en-us/security/security-insider/threat-landscape/manatee-tempest (재확인, 2024-01-25 게시물 — Manatee Tempest/EvilCorp 프로필, C2 IOC/워터마크 값 없음)
+- 페치 차단: www.silentpush.com, research.checkpoint.com, securelist.com, hunt.io, unit42.paloaltonetworks.com, www.recordedfuture.com, thedfirreport.com, msrc.microsoft.com (모두 ENOTFOUND로 재확인 — 기존 차단 목록과 일치, 신규 차단 도메인 없음)
 - 검증: 누적 17건 (IOC 값 기준, 변경 없음) / 미검증: 누적 7건 (변경 없음) / 검토 필요: 46건 (변경 없음)
 
 ## 최근 캠페인 (최근 60일)
 
-캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (33일 연속 조용한 날). 이번 실행의 6개 필수 검색 쿼리는 모두 기존에 기록된 캠페인/IOC만 재노출함: StrikeShark/SharkLoader(Securelist/Gurucul, 2026-06, 출처 접근 불가), The Gentlemen/CountLoader(Silent Push·Check Point, 2026-02~04, 출처 접근 불가, 워터마크 1473793097/1357776117, C2 91.107.247[.]163 — 기존과 동일 미검증), RedNovember/Pantegana, FrostBeacon(Seqrite, 2025-11), Aur0ra 랜섬웨어, SNOWLIGHT/GoCobaltStrike, Nitrogen(워터마크 678358251), Silver Dragon(APT41), Manatee Tempest/EvilCorp. 신규 캠페인명, 신규 공격자 귀속 C2, 신규 해시, 신규 워터마크 값 없음.
+캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (34일 연속 조용한 날). 이번 실행의 6개 필수 검색 쿼리는 모두 기존에 기록된 캠페인/IOC만 재노출함: StrikeShark/SharkLoader(Securelist/Gurucul, 2026-06, 출처 접근 불가), The Gentlemen/CountLoader(Silent Push·Check Point, 2026-02~04, 출처 접근 불가, 워터마크 1473793097/1357776117, C2 91.107.247[.]163 — 기존과 동일 미검증), Nitrogen/Aur0ra 랜섬웨어(Cybersecurity News·Sophos, 2026-08-18, 출처 접근 불가), SNOWLIGHT/GoCobaltStrike(SOCRadar, 중국 연계, 크랙판 재구현, 출처 접근 불가), 가짜 KeePass→ESXi/Black Basta IAB 워터마크(WithSecure/BleepingComputer, 출처 접근 불가), Manatee Tempest/EvilCorp(Microsoft, 검증, IOC 값 없음). 신규 캠페인명, 신규 공격자 귀속 C2, 신규 해시, 신규 워터마크 값 없음.
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
 - 108.61.242[.]65 — KnowledgeDeliver/CVE-2026-5426 또는 BlackByte 관련 검증된 캠페인 C2 — verified
@@ -35,6 +35,7 @@
 - **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 특정 워터마크 해시 (검증됨, Mandiant)
 - **666** — Storm-0501 고유 변조 워터마크 (검증됨, Microsoft, 2024-09-26)
 - Manatee Tempest/EvilCorp — Cobalt Strike 로더 공급자 역할 (검증됨, Microsoft, IOC 값 없음)
+- 가짜 KeePass→ESXi 랜섬웨어 — Black Basta 연계 IAB 워터마크 (미검증, WithSecure, 구체적 수치 미공개)
 - 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적, 이번 실행 변경 없음)
 
 ## 파일 해시 (8)
@@ -64,7 +65,7 @@
 - 검토 필요 신규 추가: 없음
 - 신규 JARM 후보: 없음
 - 신규 워터마크/배경 귀속 노트: 없음
-- 네트워크 범위 확인: unit42.paloaltonetworks.com, thedfirreport.com, www.silentpush.com, research.checkpoint.com, securelist.com, hunt.io, community.gurucul.com — 모두 재시도, 전부 차단 재확인 (ENOTFOUND, 기존 목록과 일치). microsoft.com, cloud.google.com은 정상 접근, 신규 CS 관련 콘텐츠 없음. 33번째 연속 조용한 날 (검증된 공격자 C2/캠페인 수준 신규 발견 없음, 스트릭: 2026-10-13 ~ 2026-11-19).
+- 네트워크 범위 확인: www.silentpush.com, research.checkpoint.com, securelist.com, hunt.io, unit42.paloaltonetworks.com, www.recordedfuture.com, thedfirreport.com, msrc.microsoft.com — 모두 재시도, 전부 차단 재확인 (ENOTFOUND, 기존 목록과 일치). microsoft.com, cloud.google.com은 정상 접근, 신규 CS 관련 콘텐츠 없음. 34번째 연속 조용한 날 (검증된 공격자 C2/캠페인 수준 신규 발견 없음, 스트릭: 2026-10-13 ~ 2026-11-20).
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -79,13 +80,13 @@
 ```
 
 ## 출처
-- [Microsoft Security Blog search — "cobalt strike"](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 재확인 2026-11-19 — fetched
-- [Google Cloud Blog — Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence) — 재확인 2026-11-19 — fetched
-- [Unit 42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — 2026-11-19 — blocked (ENOTFOUND)
-- [Unit 42 — Attackers exploit public Cobalt Strike profiles](https://unit42.paloaltonetworks.com/attackers-exploit-public-cobalt-strike-profiles/) — 2026-11-19 — blocked (ENOTFOUND)
-- [The DFIR Report — Cobalt Strike and a pair of SOCKS lead to LockBit ransomware](https://thedfirreport.com/2025/01/27/cobalt-strike-and-a-pair-of-socks-lead-to-lockbit-ransomware/) — 2026-11-19 — blocked (ENOTFOUND)
-- [Silent Push — The Gentlemen ransomware](https://www.silentpush.com/blog/gentlemen-ransomware/) — 2026-11-19 — blocked (ENOTFOUND)
-- [Check Point Research — DFIR Report: The Gentlemen](https://research.checkpoint.com/2026/dfir-report-the-gentlemen/) — 2026-11-19 — blocked (ENOTFOUND)
-- [Securelist — StrikeShark campaign](https://securelist.com/strikeshark-campaign/120326/) — 2026-11-19 — blocked (ENOTFOUND)
-- [Hunt.io — Rare watermark links Cobalt Strike team servers](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity) — 2026-11-19 — blocked (ENOTFOUND)
-- [Gurucul Community — StrikeShark/SharkLoader](https://community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026) — 2026-11-19 — blocked (ENOTFOUND)
+- [Google Cloud Blog — Defining Cobalt Strike Components](https://cloud.google.com/blog/topics/threat-intelligence/defining-cobalt-strike-components) — 재확인 2026-11-20 — fetched
+- [Microsoft Security Insider — Manatee Tempest](https://www.microsoft.com/en-us/security/security-insider/threat-landscape/manatee-tempest) — 재확인 2026-11-20 — fetched
+- [Silent Push — The Gentlemen ransomware](https://www.silentpush.com/blog/gentlemen-ransomware/) — 2026-11-20 — blocked (ENOTFOUND)
+- [Check Point Research — DFIR Report: The Gentlemen](https://research.checkpoint.com/2026/dfir-report-the-gentlemen/) — 2026-11-20 — blocked (ENOTFOUND)
+- [Securelist — StrikeShark campaign](https://securelist.com/strikeshark-campaign/120326/) — 2026-11-20 — blocked (ENOTFOUND)
+- [Hunt.io — Rare watermark links Cobalt Strike team servers](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity) — 2026-11-20 — blocked (ENOTFOUND)
+- [Unit 42 — Cobalt Strike Team Server](https://unit42.paloaltonetworks.com/cobalt-strike-team-server/) — 2026-11-20 — blocked (ENOTFOUND)
+- [Recorded Future — 2025 Year in Review: Malicious Infrastructure](https://www.recordedfuture.com/research/2025-year-in-review-malicious-infrastructure) — 2026-11-20 — blocked (ENOTFOUND)
+- [The DFIR Report — Cobalt Strike and a pair of SOCKS lead to LockBit ransomware](https://thedfirreport.com/?p=41604) — 2026-11-20 — blocked (ENOTFOUND)
+- [MSRC — Hunting for Cobalt Strike](https://msrc.microsoft.com/blog/2022/10/hunting-for-cobalt-strike-mining-and-plotting-for-fun-and-profit) — 2026-11-20 — blocked (ENOTFOUND)
