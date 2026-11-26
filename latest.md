@@ -1,13 +1,13 @@
-# Cobalt Strike Snapshot — 2026-11-25 UTC
+# Cobalt Strike Snapshot — 2026-11-26 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/topics/threat-intelligence/defining-cobalt-strike-components (재페치, Mandiant 2021-12-10 원문 — 팀서버/워터마크/맬리어블 프로파일 일반 배경 설명; 이미 2026-11-14 실행에서 전문 수집·반영된 동일 문서, 신규 캠페인/IOC 없음)
-- 페치 차단: unit42.paloaltonetworks.com, thedfirreport.com, www.recordedfuture.com, research.checkpoint.com, www.silentpush.com, hunt.io, msrc.microsoft.com, www.group-ib.com (8개 모두 ENOTFOUND — 기존 알려진 차단 도메인 목록과 일치, 신규 차단 확인 없음)
-- 검증: 누적 변경 없음 / 미검증: 누적 변경 없음 / 검토 필요: 46건 (변경 없음)
+- 페치 성공: cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse (2022-11-18 원문, 크랙판 탐지용 YARA 시그니처 배경 설명 — 기존에 이미 반영된 동일 내용, 신규 캠페인/IOC 없음); cloud.google.com/security/resources/m-trends-executive-edition (페이지는 열렸으나 JS 렌더링으로 텍스트 추출 실패 — 내용은 WebSearch 스니펫으로만 확인, 미검증 처리)
+- 페치 차단: securelist.com, community.gurucul.com, threatfox.abuse.ch, any.run, services.google.com (5개 모두 ENOTFOUND, 이번 실행 신규 시도)
+- 검증: 누적 변경 없음 / 미검증: 1건 추가 (M-Trends 2026 BEACON 순위 하락, IOC 아님) / 검토 필요: 46건 (변경 없음)
 
 ## 최근 캠페인 (최근 60일)
 
-캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (39일 연속 조용한 날, 스트릭: 2026-10-13 ~ 2026-11-25). 6개 필수 검색 쿼리는 모두 기존에 기록된 캠페인/IOC만 재노출함: StrikeShark/SharkLoader(Securelist/Gurucul, 2026-06), The Gentlemen/CountLoader(Silent Push·Check Point, 2026-02~04, 워터마크 1473793097/1357776117, C2 91.107.247[.]163 — 기존과 동일 미검증), Nitrogen 랜섬웨어(2026-09), 크랙판 워터마크 귀속 사례들(SNOWLIGHT/GoCobaltStrike, Black Basta 연계 IAB — 기존과 동일). 이번 실행에서 시도한 9개 페치 중 8개가 기존 차단 목록과 동일하게 차단되었고(www.group-ib.com은 신규 시도이나 동일하게 차단됨), 유일하게 성공한 cloud.google.com 문서도 이미 전문 수집된 동일 자료였음. 신규 캠페인명, 신규 공격자 귀속 C2, 신규 해시, 신규 워터마크 값 없음.
+캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (40일 연속 조용한 날, 스트릭: 2026-10-13 ~ 2026-11-26). 6개 필수 검색 쿼리는 모두 기존에 기록된 캠페인/IOC만 재노출함: StrikeShark/SharkLoader(Securelist/Gurucul, 2026-06), The Gentlemen/CountLoader(Silent Push·Check Point, 2026-02~04, 워터마크 1473793097/1357776117, C2 91.107.247[.]163 — 기존과 동일 미검증), Nitrogen 랜섬웨어(2026-09), SNOWLIGHT/GoCobaltStrike(China-nexus, 기존과 동일), Aur0ra 랜섬웨어(AI 테스트 인프라, 기존과 동일). 새로 확인된 배경 정보 한 건: Google Cloud/Mandiant M-Trends 2026 보고서(2025년 1~12월 Mandiant 조사 기준)에 따르면 Cobalt Strike BEACON이 5년 연속 1위였던 "가장 많이 관측된 악성코드 패밀리" 순위에서 4위로 하락, GOLDVEIN.JAVA 다운로더(신규 1위)와 REDBIKE/Akira 랜섬웨어(2위)에 뒤처짐 — 단 페이지 직접 페치가 JS 렌더링 문제로 텍스트를 추출하지 못해 미검증(WebSearch 스니펫)으로 기록. 신규 캠페인명, 신규 공격자 귀속 C2, 신규 해시, 신규 워터마크 값 없음.
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
 - 108.61.242[.]65 — KnowledgeDeliver/CVE-2026-5426 또는 BlackByte 관련 검증된 캠페인 C2 — verified
@@ -26,7 +26,7 @@
 - `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — Cobalt Strike 기본 팀서버 JARM (OpenJDK 11), 일반 헌팅 신호 — unverified
 - `07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1` — 동일 기본값의 대체 보고값 (Java 11 SSL 스택), 2차 후보 — unverified
 - `2ad2ad16d2ad2ad00042d42d00042ddb04deffa1705e2edc44cae1ed24a4da` — socat/iptables 뒤로 리다이렉트된 팀서버의 3번째 후보값(Kali 기반 예시) — unverified
-- 참고: 이번 실행에서도 신규 JARM 값 없음.
+- 참고: 이번 실행에서도 신규 JARM 값 없음 (RST Cloud 2026-03 자료가 동일 3개 후보값을 재확인함, 기존과 동일).
 
 ## 워터마크 · 맬리어블 프로파일
 - **0 / 1** — 크랙판 공통값, 차단 신호 아님 (LOW SIGNAL)
@@ -35,7 +35,8 @@
 - **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 특정 워터마크 해시 (검증됨, Mandiant)
 - **666** — Storm-0501 고유 변조 워터마크 (검증됨, Microsoft, 2024-09-26)
 - Manatee Tempest/EvilCorp — Cobalt Strike 로더 공급자 역할 (검증됨, Microsoft, IOC 값 없음)
-- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적, 이번 실행 변경 없음)
+- **신규 (미검증)**: M-Trends 2026 — BEACON이 Mandiant 최다 관측 악성코드 5년 연속 1위에서 4위로 하락 (일반 트렌드, IOC 아님)
+- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적, 이번 실행 1건 추가)
 
 ## 파일 해시 (8)
 ### SHA-256
@@ -63,8 +64,8 @@
 - 분류 변경: 없음
 - 검토 필요 신규 추가: 없음
 - 신규 JARM 후보: 없음
-- 신규 워터마크/배경 귀속 노트: 없음
-- 네트워크 범위 확인: 이번 실행에서 시도한 9개 URL 중 cloud.google.com만 재확인 가능했고(기존에 이미 전문 수집된 동일 문서), 나머지 8개(unit42.paloaltonetworks.com, thedfirreport.com, www.recordedfuture.com, research.checkpoint.com, www.silentpush.com, hunt.io, msrc.microsoft.com, www.group-ib.com)는 모두 기존 차단 목록과 일치하는 ENOTFOUND(www.group-ib.com은 최초 시도였으나 동일하게 차단 확인). 1차 출처 접근 가능 도메인은 여전히 microsoft.com(www), cloud.google.com 뿐으로 재확인됨. 39번째 연속 조용한 날 (검증된 공격자 C2/캠페인 수준 신규 발견 없음, 스트릭: 2026-10-13 ~ 2026-11-25).
+- 신규 워터마크/배경 귀속 노트: 1건 추가 (M-Trends 2026 BEACON 순위 하락 — IOC 아님, 미검증)
+- 네트워크 범위 확인: 이번 실행에서 시도한 6개 URL 중 cloud.google.com 2개(1개는 전문 수집, 1개는 JS 렌더링으로 텍스트 추출 실패)만 접근 가능했고, 나머지 5개(securelist.com, community.gurucul.com, threatfox.abuse.ch, any.run, services.google.com)는 모두 ENOTFOUND로 신규 차단 확인됨. 1차 출처 접근 가능 도메인은 여전히 microsoft.com, cloud.google.com 뿐으로 재확인됨. 40번째 연속 조용한 날 (검증된 공격자 C2/캠페인 수준 신규 발견 없음, 스트릭: 2026-10-13 ~ 2026-11-26).
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -79,12 +80,10 @@
 ```
 
 ## 출처
-- [Google Cloud Blog — Defining Cobalt Strike Components](https://cloud.google.com/blog/topics/threat-intelligence/defining-cobalt-strike-components) — 2021-12-10 — fetched (기존 수집 자료와 동일, 신규 내용 없음)
-- [Unit 42 — Attackers Exploit Public Cobalt Strike Profiles](https://unit42.paloaltonetworks.com/attackers-exploit-public-cobalt-strike-profiles/) — 2026-11-25 — blocked (ENOTFOUND)
-- [The DFIR Report — Cobalt Strike and a Pair of SOCKS Lead to LockBit](https://thedfirreport.com/?p=41604) — 2026-11-25 — blocked (ENOTFOUND)
-- [Recorded Future — 2025 Year in Review: Malicious Infrastructure](https://www.recordedfuture.com/research/2025-year-in-review-malicious-infrastructure) — 2026-11-25 — blocked (ENOTFOUND)
-- [Check Point Research — DFIR Report: The Gentlemen](https://research.checkpoint.com/2026/dfir-report-the-gentlemen/) — 2026-11-25 — blocked (ENOTFOUND)
-- [Silent Push — No Place to Hide (The Gentlemen)](https://www.silentpush.com/blog/gentlemen-ransomware/) — 2026-11-25 — blocked (ENOTFOUND)
-- [Hunt.io — Rare Watermark Links Cobalt Strike 4.10 Team Servers](https://hunt.io/blog/rare-watermark-links-cobalt-strike-team-servers-to-ongoing-suspicious-activity) — 2026-11-25 — blocked (ENOTFOUND)
-- [Microsoft MSRC — Hunting for Cobalt Strike](https://msrc.microsoft.com/blog/2022/10/hunting-for-cobalt-strike-mining-and-plotting-for-fun-and-profit) — 2026-11-25 — blocked (ENOTFOUND)
-- [Group-IB Blog](https://www.group-ib.com/blog/) — 2026-11-25 — blocked (ENOTFOUND, first attempt)
+- [Google Cloud Blog — Making Cobalt Strike harder for threat actors to abuse](https://cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse) — 2022-11-18 — fetched (기존 수집 자료와 동일, 신규 내용 없음)
+- [Google Cloud / Mandiant — M-Trends 2026 Report: Executive Edition](https://cloud.google.com/security/resources/m-trends-executive-edition) — 2026 — fetched (텍스트 추출 실패, JS 렌더링 — WebSearch 스니펫으로만 내용 확인, 미검증)
+- [Kaspersky Securelist — StrikeShark Campaign](https://securelist.com/strikeshark-campaign/120326/) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
+- [Gurucul Community — StrikeShark Investigation](https://community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
+- [ThreatFox — win.cobalt_strike](https://threatfox.abuse.ch/browse/malware/win.cobalt_strike/) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
+- [ANY.RUN — Cobalt Strike malware trends](https://any.run/malware-trends/cobaltstrike) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
+- [Google — M-Trends 2026 Executive Edition PDF](https://services.google.com/fh/files/misc/m-trends-2026-executive-edition-en.pdf) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
