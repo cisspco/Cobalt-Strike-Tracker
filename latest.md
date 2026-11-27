@@ -1,13 +1,18 @@
-# Cobalt Strike Snapshot — 2026-11-26 UTC
+# Cobalt Strike Snapshot — 2026-11-27 UTC
 
 ## 수집 상태
-- 페치 성공: cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse (2022-11-18 원문, 크랙판 탐지용 YARA 시그니처 배경 설명 — 기존에 이미 반영된 동일 내용, 신규 캠페인/IOC 없음); cloud.google.com/security/resources/m-trends-executive-edition (페이지는 열렸으나 JS 렌더링으로 텍스트 추출 실패 — 내용은 WebSearch 스니펫으로만 확인, 미검증 처리)
-- 페치 차단: securelist.com, community.gurucul.com, threatfox.abuse.ch, any.run, services.google.com (5개 모두 ENOTFOUND, 이번 실행 신규 시도)
-- 검증: 누적 변경 없음 / 미검증: 1건 추가 (M-Trends 2026 BEACON 순위 하락, IOC 아님) / 검토 필요: 46건 (변경 없음)
+- 페치 성공: cloud.google.com/blog/topics/threat-intelligence (신규 CS 콘텐츠 없음); www.microsoft.com/en-us/security/blog/?s=cobalt+strike (신규 CS 콘텐츠 없음, 2021 Solorigate/TEARDROP 글이 여전히 최상단)
+- 페치 차단: securityarsenal.com, security.com (www/비-www 둘 다), www.zscaler.com, www.techradar.com, assets.recordedfuture.com (5개 모두 ENOTFOUND, 이번 실행 신규 시도)
+- 검증: 누적 변경 없음 / 미검증: 2건 추가 (컨텍스트 전용, IOC 아님) / 검토 필요: 49건 (3건 추가)
 
 ## 최근 캠페인 (최근 60일)
 
-캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (40일 연속 조용한 날, 스트릭: 2026-10-13 ~ 2026-11-26). 6개 필수 검색 쿼리는 모두 기존에 기록된 캠페인/IOC만 재노출함: StrikeShark/SharkLoader(Securelist/Gurucul, 2026-06), The Gentlemen/CountLoader(Silent Push·Check Point, 2026-02~04, 워터마크 1473793097/1357776117, C2 91.107.247[.]163 — 기존과 동일 미검증), Nitrogen 랜섬웨어(2026-09), SNOWLIGHT/GoCobaltStrike(China-nexus, 기존과 동일), Aur0ra 랜섬웨어(AI 테스트 인프라, 기존과 동일). 새로 확인된 배경 정보 한 건: Google Cloud/Mandiant M-Trends 2026 보고서(2025년 1~12월 Mandiant 조사 기준)에 따르면 Cobalt Strike BEACON이 5년 연속 1위였던 "가장 많이 관측된 악성코드 패밀리" 순위에서 4위로 하락, GOLDVEIN.JAVA 다운로더(신규 1위)와 REDBIKE/Akira 랜섬웨어(2위)에 뒤처짐 — 단 페이지 직접 페치가 JS 렌더링 문제로 텍스트를 추출하지 못해 미검증(WebSearch 스니펫)으로 기록. 신규 캠페인명, 신규 공격자 귀속 C2, 신규 해시, 신규 워터마크 값 없음.
+캠페인 수준의 전적으로 새로운 보고는 이번 실행에서도 없음 (40일 연속 조용한 날, 스트릭: 2026-10-13 ~ 2026-11-26). 6개 필수 검색 쿼리는 대부분 기존에 기록된 캠페인/IOC만 재노출했으나, 두 건의 새로운 컨텍스트가 확인됨(둘 다 IOC 수준 미검증):
+
+1. **Devmine 스푸핑 도메인 침해 (공격자 미귀속)** — security.com 보고(2026-03~07, 페치 차단, 검색 스니펫만). 아시아 기술 스타트업을 침해한 공격자가 AdaptixC2 에이전트와 Cobalt Strike Beacon을 반복 배포 시도했으나 대부분 피해 네트워크에서 차단됨. 초기 침투는 ClickFix → PowerShell. 2026-06-08 AdaptixC2 에이전트가 AI 소프트웨어 개발사 "Devmine"을 스푸핑한 C2 도메인("datalyerservice") 사용. 2026-06-19 `thread_indirect.exe`로 위장한 Cobalt Strike Beacon 배포. 구체적 IP/도메인/해시/워터마크 없음 — 컨텍스트만 기록.
+2. **SNOWLIGHT/China-nexus — 구체적 IP 확인 (여전히 미검증)** — securityarsenal.com OTX-pulse 분석(2026-08-04, 페치 차단)이 CVE-2025-24813을 악용하는 중국계 "spray-and-check" 캠페인(크랙판 중국어 Cobalt Strike 재구현체 "GoCobaltStrike" 사용, 기존에 이미 기록된 SNOWLIGHT와 동일 선상)의 핵심 인프라로 130.94.17[.]180 / 130.94.30[.]168, 클라우드 호스팅 노드로 149.129.37[.]105 명시. 130.94.30[.]168은 SOCRadar의 SNOWLIGHT 보고서(China-nexus UNC5174/UNC6586, GTIG 추적)에서도 동일하게 전달 호스트로 지목되어 2개 독립 출처 간 교차 확인됨(둘 다 미페치). 다만 "GoCobaltStrike"는 정식 Cobalt Strike가 아닌 재구현체로 명시되어 있어, 본 트래커의 "Cobalt Strike 자체 확인" 기준을 명확히 만족하지 못함 — 차단 대상 아님, `iocs/needs-review.txt`에만 3건 추가.
+
+기타 재확인된 기존 캠페인: StrikeShark/SharkLoader, The Gentlemen/CountLoader(워터마크 1473793097/1357776117, C2 91.107.247[.]163), Nitrogen 랜섬웨어, Aur0ra 랜섬웨어, Storm-0501/Embargo — 모두 기존과 동일, 신규 내용 없음.
 
 ## 공격자 C2 팀서버 (차단 대상) (6)
 - 108.61.242[.]65 — KnowledgeDeliver/CVE-2026-5426 또는 BlackByte 관련 검증된 캠페인 C2 — verified
@@ -19,14 +24,11 @@
 
 (도메인 없음)
 
-## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (46)
-- 변경 없음, 기존 46건 유지. 상세는 `iocs/needs-review.txt` 참조.
+## 검토 필요 — 스캐너 탐지만 된 팀서버 (차단 금지) (49)
+- 신규 3건 추가: 130.94.17[.]180, 130.94.30[.]168, 149.129.37[.]105 — SNOWLIGHT/China-nexus "spray-and-check" 캠페인(GoCobaltStrike 재구현체) 관련 미페치·단일/이중 소스 귀속, "정식 Cobalt Strike 확인" 기준 미충족으로 차단 보류. 나머지 46건은 변경 없음. 상세는 `iocs/needs-review.txt` 참조.
 
 ## JARM 헌팅 신호 (차단 용도 아님) (3)
-- `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2` — Cobalt Strike 기본 팀서버 JARM (OpenJDK 11), 일반 헌팅 신호 — unverified
-- `07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1` — 동일 기본값의 대체 보고값 (Java 11 SSL 스택), 2차 후보 — unverified
-- `2ad2ad16d2ad2ad00042d42d00042ddb04deffa1705e2edc44cae1ed24a4da` — socat/iptables 뒤로 리다이렉트된 팀서버의 3번째 후보값(Kali 기반 예시) — unverified
-- 참고: 이번 실행에서도 신규 JARM 값 없음 (RST Cloud 2026-03 자료가 동일 3개 후보값을 재확인함, 기존과 동일).
+- 변경 없음. `07d14d16d21d21d00042d41d00041de5fb3038104f457d92ba02e9311512c2`, `07d14d16d21d21d07c42d41d00041d24a458a375eef0c576d23a7bab9a9fb1`, `2ad2ad16d2ad2ad00042d42d00042ddb04deffa1705e2edc44cae1ed24a4da` — 모두 일반 헌팅 신호, 캠페인 특정 아님.
 
 ## 워터마크 · 맬리어블 프로파일
 - **0 / 1** — 크랙판 공통값, 차단 신호 아님 (LOW SIGNAL)
@@ -35,8 +37,8 @@
 - **BeudtKgqnlm0Ruvf+VYxuw==** — APT24 특정 워터마크 해시 (검증됨, Mandiant)
 - **666** — Storm-0501 고유 변조 워터마크 (검증됨, Microsoft, 2024-09-26)
 - Manatee Tempest/EvilCorp — Cobalt Strike 로더 공급자 역할 (검증됨, Microsoft, IOC 값 없음)
-- **신규 (미검증)**: M-Trends 2026 — BEACON이 Mandiant 최다 관측 악성코드 5년 연속 1위에서 4위로 하락 (일반 트렌드, IOC 아님)
-- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적, 이번 실행 1건 추가)
+- **신규 (미검증, 컨텍스트만)**: Devmine 스푸핑 도메인 침해(AdaptixC2+CS Beacon, 공격자 미귀속); SNOWLIGHT/China-nexus GoCobaltStrike 캠페인의 구체적 IP 3건(위 참조, 차단 대상 아님)
+- 전체 목록은 `iocs/watermarks-and-profiles.md` 참조 (누적, 이번 실행 2건 추가)
 
 ## 파일 해시 (8)
 ### SHA-256
@@ -53,6 +55,7 @@
 - SMB BEACON named pipe `\\.\pipe\UIA_PIPE_*` (UNC2628/DarkSide)
 - DNS BEACON 서브도메인 패턴 `h.dns.<C2 domain>`, `ridoj4.<8자>.dns.<C2 domain>` 등 (UNC4393/BASTA)
 - Beacon이 `rundll32.exe`(.dll)/`regsvr32.exe`(.ocx)로 실행됨 (Storm-0501)
+- Cobalt Strike Beacon이 `thread_indirect.exe`로 위장 (Devmine 스푸핑 침해, 미검증, DB 서버 프로세스로 오인시키는 의도로 추정)
 - 팀서버 기본 TCP 50050 포트, 기본 spawn_to `rundll32.exe`, 기본 차단 User-Agent curl/wget (Mandiant 팀서버 아키텍처 참조 문서, 재확인)
 - 자세한 내용은 `iocs/watermarks-and-profiles.md` 참조
 
@@ -62,10 +65,10 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 분류 변경: 없음
-- 검토 필요 신규 추가: 없음
+- 검토 필요 신규 추가: 3건 (130.94.17.180, 130.94.30.168, 149.129.37.105 — SNOWLIGHT/China-nexus, GoCobaltStrike 재구현체 캐비엇)
 - 신규 JARM 후보: 없음
-- 신규 워터마크/배경 귀속 노트: 1건 추가 (M-Trends 2026 BEACON 순위 하락 — IOC 아님, 미검증)
-- 네트워크 범위 확인: 이번 실행에서 시도한 6개 URL 중 cloud.google.com 2개(1개는 전문 수집, 1개는 JS 렌더링으로 텍스트 추출 실패)만 접근 가능했고, 나머지 5개(securelist.com, community.gurucul.com, threatfox.abuse.ch, any.run, services.google.com)는 모두 ENOTFOUND로 신규 차단 확인됨. 1차 출처 접근 가능 도메인은 여전히 microsoft.com, cloud.google.com 뿐으로 재확인됨. 40번째 연속 조용한 날 (검증된 공격자 C2/캠페인 수준 신규 발견 없음, 스트릭: 2026-10-13 ~ 2026-11-26).
+- 신규 워터마크/배경 귀속 노트: 2건 추가 (Devmine/AdaptixC2 침해, SNOWLIGHT IP 보강) — 둘 다 IOC 아님, 컨텍스트만
+- 네트워크 범위 확인: 이번 실행에서 신규 시도한 5개 도메인(securityarsenal.com, security.com, www.zscaler.com, www.techradar.com, assets.recordedfuture.com) 모두 ENOTFOUND로 신규 차단 확인. 1차 출처 접근 가능 도메인은 여전히 microsoft.com, cloud.google.com 뿐으로 재확인됨. 40번째 연속 조용한 날 (검증된 공격자 C2/캠페인 수준 신규 발견 없음, 스트릭: 2026-10-13 ~ 2026-11-26).
 
 ## 차단 운영 포맷 (복붙용)
 
@@ -80,10 +83,10 @@
 ```
 
 ## 출처
-- [Google Cloud Blog — Making Cobalt Strike harder for threat actors to abuse](https://cloud.google.com/blog/products/identity-security/making-cobalt-strike-harder-for-threat-actors-to-abuse) — 2022-11-18 — fetched (기존 수집 자료와 동일, 신규 내용 없음)
-- [Google Cloud / Mandiant — M-Trends 2026 Report: Executive Edition](https://cloud.google.com/security/resources/m-trends-executive-edition) — 2026 — fetched (텍스트 추출 실패, JS 렌더링 — WebSearch 스니펫으로만 내용 확인, 미검증)
-- [Kaspersky Securelist — StrikeShark Campaign](https://securelist.com/strikeshark-campaign/120326/) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
-- [Gurucul Community — StrikeShark Investigation](https://community.gurucul.com/articles/ThreatResearch/StrikeShark-Investigating-a-New-25-6-2026) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
-- [ThreatFox — win.cobalt_strike](https://threatfox.abuse.ch/browse/malware/win.cobalt_strike/) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
-- [ANY.RUN — Cobalt Strike malware trends](https://any.run/malware-trends/cobaltstrike) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
-- [Google — M-Trends 2026 Executive Edition PDF](https://services.google.com/fh/files/misc/m-trends-2026-executive-edition-en.pdf) — 2026-11-26 — blocked (ENOTFOUND, 신규 시도)
+- [Google Cloud Blog — Threat Intelligence](https://cloud.google.com/blog/topics/threat-intelligence) — 2026-11-27 — fetched (신규 CS 콘텐츠 없음)
+- [Microsoft Security Blog search: cobalt strike](https://www.microsoft.com/en-us/security/blog/?s=cobalt+strike) — 2026-11-27 — fetched (신규 CS 콘텐츠 없음, 최상단은 2021년 Solorigate/TEARDROP)
+- [Security Arsenal — China-nexus spray-and-check campaign (GoCS/SNOWLIGHT/Neo-Regeorg)](https://securityarsenal.com/blog/china-nexus-spray-and-check-campaign-gocs-snowlight-neo-regeorg-infrastructure-otx-pulse-analysis) — 2026-08-04 — blocked (ENOTFOUND, 신규 시도)
+- [Security.com — Node.js: Old Technique Makes a Comeback](https://www.security.com/blog-post/node-js-returns-ransomware) — 2026 — blocked (ENOTFOUND, 신규 시도, www/비-www 둘 다)
+- [Zscaler — Tropic Trooper pivots AdaptixC2 and custom Beacon listener](https://www.zscaler.com/blogs/security-research/tropic-trooper-pivots-adaptixc2-and-custom-beacon-listener) — 2026 — blocked (ENOTFOUND, 신규 시도)
+- [TechRadar Pro — Chinese organizations hit by Cobalt Strike malware from within China](https://www.techradar.com/pro/security/chinese-organizations-are-being-hit-by-cobalt-strike-malware-from-within-china) — 2026 — blocked (ENOTFOUND, 신규 시도)
+- [Recorded Future Insikt — CTA-CN-2025-0924 PDF](https://assets.recordedfuture.com/insikt-report-pdfs/2025/cta-cn-2025-0924.pdf) — 2025 — blocked (ENOTFOUND, 신규 시도, recordedfuture.com 레지스터블 도메인 전체 차단 확인)
